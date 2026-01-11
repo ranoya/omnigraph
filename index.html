@@ -697,20 +697,10 @@
             customcmd[i].instruction = dados[i].instruction;
             customcmd[i].descricao = dados[i].descricao;
 
-            if (
-              typeof customcmd[i].icon != "undefined" &&
-              customcmd[i].icon != null &&
-              customcmd[i].icon != ""
-            ) {
-              appsdesktop += `<div style="width: 100%; aspect-ratio: 1/1; cursor: pointer;" onclick='${customcmd[i].instruction}()'>${customcmd[i].icon}</div>`;
-            }
-
             let scrjs = document.createElement("script");
             scrjs.src = dados[i].js;
             document.head.appendChild(scrjs);
           }
-
-          document.getElementById("icons").innerHTML = appsdesktop;
 
           // document.getElementById("addons").innerHTML = customplugins;
         });
