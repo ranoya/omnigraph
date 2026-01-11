@@ -1,5 +1,13 @@
 editores = function (p) {
-  let id = windowmanager.createframe();
+  let id = windowmanager.createframe("", {
+    Tudo: "",
+    Básico: "Básico",
+    Online: "Online",
+    Desktop: "Desktop",
+    Notebook: "Literate",
+    Livecode: "Livecode",
+    CLI: "CLI",
+  });
 
   omnifilter = function (arr) {
     let code = `

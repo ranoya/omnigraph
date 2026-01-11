@@ -572,8 +572,21 @@
             // onclick="windowmanager.top('${this.ctf}')"
 
             conteudo += `
-            <div id="m_f${this.ctf}" class="barramenu">
-              <a onclick="pop('','t_f${this.ctf}');">Tudo</a><a onclick="pop('Básico','t_f${this.ctf}');">Básico</a><a onclick="pop('Online','t_f${this.ctf}');">Online</a><a onclick="pop('Desktop','t_f${this.ctf}');">Desktop</a><a onclick="pop('Literate','t_f${this.ctf}');">Notebook</a><a onclick="pop('Livecode','t_f${this.ctf}');">Livecode</a><a onclick="pop('CLI','t_f${this.ctf}');">CLI</a>
+            <div id="m_f${this.ctf}" class="barramenu">`;
+
+            if (typeof men != "undefined" && men != null && men != "") {
+              for (let key in men) {
+                conteudo += `<a onclick="pop('${men[key]}','t_f${this.ctf}');">${key}</a>`;
+              }
+            }
+
+            /*
+            conteudo += `
+              <a onclick="pop('','t_f${this.ctf}');">Tudo</a><a onclick="pop('Básico','t_f${this.ctf}');">Básico</a><a onclick="pop('Online','t_f${this.ctf}');">Online</a><a onclick="pop('Desktop','t_f${this.ctf}');">Desktop</a><a onclick="pop('Literate','t_f${this.ctf}');">Notebook</a><a onclick="pop('Livecode','t_f${this.ctf}');">Livecode</a><a onclick="pop('CLI','t_f${this.ctf}');">CLI</a>`;
+
+            */
+
+            conteudo += `
             </div>
             <div id="rest_${this.ctf}" class="conteudo">${conten}</div>
             
