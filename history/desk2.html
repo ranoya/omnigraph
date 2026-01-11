@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Xanh+Mono:ital@0;1&display=swap");
+
+      :root {
+        --titulo-cor-bg: #b58181;
+        --titulo-max-close: #b71a1a;
+        --menu-hover: #9f424288;
+      }
+
+      input::placeholder {
+        color: #ffffff77;
+      }
+
+      html {
+        font-size: 14px;
+        font-family: "Source Code Pro", monospace;
+        background-color: #f1f0ea;
+        background-color: #fffef5;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #383838 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 50%
+        );
+
+        background-image: repeating-linear-gradient(
+          45deg,
+          #adadad 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 25%
+        );
+
+        overflow: hidden;
+      }
+
+      body {
+        overflow: hidden;
+        width: 100vw;
+        height: 100dvh;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      .janela {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        border: 4px double black;
+        width: 500px;
+        padding: 0;
+        box-shadow: 1rem 1rem #00000033;
+        box-shadow: 0.5rem 0.5rem 10px 0px #00000033;
+        margin: calc(1rem - 4px);
+        background-color: #fffef5;
+        resize: both;
+        overflow: auto;
+        overflow-y: hidden;
+        height: 400px;
+        position: fixed;
+        left: 100px;
+        top: 180px;
+      }
+
+      .full {
+        top: 1px !important;
+        left: 1px !important;
+        width: calc(100% - 10px) !important;
+        height: calc(100dvh - 10px) !important;
+        margin: 0 !important;
+        z-index: 1000 !important;
+      }
+
+      .zoomt {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        width: 1rem;
+        height: 2rem;
+
+        display: block;
+        float: right;
+        background-color: var(--titulo-cor-bg, #000000);
+        cursor: pointer;
+      }
+      .bola {
+        width: 0.3rem;
+        height: 0.3rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        margin: 0.75rem;
+        margin-left: 0.2rem;
+      }
+
+      .bolaf {
+        width: 0.5rem;
+        height: 0.25rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        margin: 0.15rem;
+        margin-left: 0;
+        margin-top: 0.8rem;
+      }
+
+      .zoomt:hover .bola,
+      .zoomt:hover .bolaf {
+        background-color: var(--titulo-max-close, #ffb311);
+      }
+
+      ::-webkit-scrollbar {
+        width: 1rem;
+        background-color: #fffef5;
+        opacity: 0.2;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #383838 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 50%
+        );
+
+        background-image: repeating-linear-gradient(
+          45deg,
+          #adadad 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 25%
+        );
+        border-left: 1px solid black;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        width: 1rem;
+        background-color: black;
+      }
+
+      .janelatitulo {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        background-color: var(--titulo-cor-bg, #000000);
+        color: #fffef5;
+        margin-left: 0;
+        margin-top: 0;
+        width: calc(100% - 4rem);
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-weight: bolder;
+        outline: 0;
+        max-height: 75dvh;
+        line-height: 1rem;
+        cursor: pointer;
+      }
+
+      .poehead:focus {
+        outline: 0;
+      }
+
+      .input {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+      }
+
+      .conteudo {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        color: black;
+        max-height: calc(100% - 7rem + 13px);
+        overflow-y: auto;
+      }
+
+      .poe {
+        display: grid;
+        grid-template-columns: [init] 1fr 1fr 1fr 1fr [end];
+        gap: 0.25rem 1rem;
+      }
+
+      .conteudo div a {
+        text-decoration: none;
+        color: black;
+        padding: 4px;
+        margin: -2px;
+        transition: color 1.2s ease-out, background-color 1.2s ease-out;
+        background-color: #fffef5;
+        display: block;
+        cursor: pointer;
+      }
+
+      .conteudo div:hover a {
+        background-color: #61605a;
+        transition: color 0.2s ease-in, background-color 0.2s ease-in;
+        color: white;
+      }
+
+      .barramenu {
+        padding: 0;
+        width: 100%;
+        border-bottom: 1px solid black;
+        overflow-y: hidden;
+        height: 2rem !important;
+      }
+
+      .barramenu a {
+        color: black;
+        text-decoration: none;
+        font-weight: bolder;
+        border-right: 1px solid black;
+        display: inline-block;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        cursor: pointer;
+        line-height: 1rem;
+      }
+
+      .barramenu a:hover {
+        background-color: var(--menu-hover, #00000088);
+        color: white;
+      }
+
+      /* terminal */
+
+      .terminal {
+        font-size: 1rem;
+        line-height: 1rem;
+        border: 1px solid black;
+        width: 30%;
+        padding: 1rem;
+        box-shadow: 0.5rem 0.5rem #00000033;
+        box-shadow: 0.5rem 0.5rem 10px 0px #00000033;
+        background-color: #796e6e;
+        /* resize: both; */
+        overflow: auto;
+        overflow-y: hidden;
+        height: 2rem;
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        z-index: 1;
+        top: inherit;
+        resize: none;
+        color: white;
+
+        background-color: #796e6e;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #000000 0,
+          #fffef5 0.4px,
+          #796e6e 0,
+          #796e6e 50%
+        );
+      }
+
+      .terminal input {
+        width: calc(100% - 30px);
+        color: white;
+        background-color: transparent;
+        outline: 0;
+        height: 2rem;
+        line-height: 1rem;
+        border: 0;
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        font-style: normal;
+      }
+
+      .observablehq {
+        font-family: "Source Serif 4", serif;
+        font-optical-sizing: auto;
+
+        font-style: normal;
+      }
+    </style>
+
+    <script src="https://datat.vercel.app/basics.js"></script>
+  </head>
+
+  <body>
+    <script>
+      $_GET = [];
+      (function () {
+        corte = window.location.href.toString().indexOf("?");
+        if (corte > 0) {
+          argumento = window.location.href.toString().substring(corte + 1);
+          argumentos = argumento.split("&");
+          for (arg in argumentos) {
+            let argCorte = argumentos[arg].indexOf("=");
+            $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[
+              arg
+            ].substring(argCorte + 1);
+          }
+        }
+      })();
+
+      // REDEFININDO FUÇÕES DO DATAT PARA WINDOW MANAGER CLOSE
+      const uniqueobj = function (arr, crit) {
+        let newarr = [];
+
+        for (let i = 0; i < Object.keys(arr).length; i++) {
+          newarr[arr[Object.keys(arr)[i]][crit]] = 0;
+        }
+
+        let list = [];
+
+        for (let key in newarr) {
+          list.push(key);
+        }
+
+        return list;
+      };
+
+      const sortbylistobj = function (arr, list, crit) {
+        let newarr = [];
+
+        for (let l = 0; l < Object.keys(list).length; l++) {
+          for (let a = 0; a < Object.keys(arr).length; a++) {
+            if (arr[Object.keys(arr)[a]][crit] == list[Object.keys(list)[l]]) {
+              newarr.push(arr[Object.keys(arr)[a]]);
+            }
+          }
+        }
+
+        return newarr;
+      };
+
+      const alphabeticobj = function (arr, crit) {
+        let listuniques = uniqueobj(arr, crit);
+
+        listuniques.sort(function (a, b) {
+          return a - b;
+        });
+
+        let newarr = sortbylistobj(arr, listuniques, crit);
+
+        return newarr;
+      };
+
+      // VARIÁVEIS PARA DRAG
+
+      let dragstartX = 0;
+      let dragstartY = 0;
+      let dragendX = 0;
+      let dragendY = 0;
+      let objectX = 0;
+      let objectY = 0;
+      let quemsemove = "";
+
+      let sobeste = function (who) {
+        let gerenciatopo = document.getElementsByClassName("janela");
+        for (let i = 0; i < gerenciatopo.length; i++) {
+          gerenciatopo[i].style.zIndex = "2";
+        }
+        who.style.zIndex = "10";
+      };
+
+      let zoom = function (who) {
+        sobeste(who);
+        who.parentElement.classList.toggle("full");
+      };
+
+      function dragstartHandler(ev) {
+        // Add the target element's id to the data transfer object
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
+
+        let gerenciatopo = document.getElementsByClassName("janela");
+        for (let i = 0; i < gerenciatopo.length; i++) {
+          gerenciatopo[i].style.zIndex = "510";
+        }
+        document.getElementById(ev.target.id).style.zIndex = "510";
+
+        // console.log(ev.target.id);
+        dragstartX = ev.screenX;
+        dragstartY = ev.screenY;
+        objectX = document
+          .getElementById(ev.target.id)
+          .getBoundingClientRect().left;
+        objectY = document
+          .getElementById(ev.target.id)
+          .getBoundingClientRect().top;
+        quemsemove = ev.target.id;
+        /* console.log(
+          "Origem: " +
+            objectX +
+            ", " +
+            objectY +
+            " mouse: " +
+            mouseX +
+            ", " +
+            mouseY
+        ); */
+      }
+
+      function dragoverHandler(ev) {
+        // Prevent default behavior to allow drop
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+        const data = ev.dataTransfer.getData("text");
+        // console.log("eita: " + data);
+      }
+
+      function dropHandler(ev) {
+        let quemsemove = ev.dataTransfer.getData("text");
+
+        // console.log(ev.screenX + " " + ev.screenY);
+        // console.log("deltaX: " + (ev.screenX - dragstartX));
+        // console.log("deltaY: " + (ev.screenY - dragstartY));
+        ev.preventDefault();
+        dragendX = ev.screenX;
+        dragendY = ev.screenY;
+        document.getElementById(quemsemove).style.left = `${
+          dragendX - dragstartX + objectX
+        }px`;
+        document.getElementById(quemsemove).style.top = `${
+          dragendY - dragstartY + objectY
+        }px`;
+
+        let qualjanela = windowmanager.findframe(quemsemove);
+        // console.log("quemsemove = " + quemsemove);
+        // console.log("qualjanela = " + qualjanela);
+
+        windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
+        windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
+        windowmanager.top(quemsemove);
+
+        // Get the data, which is the id of the dragged element
+        // const data = ev.dataTransfer.getData("text");
+        // console.log(data);
+        // Append the dragged element to the drop target
+        //ev.target.appendChild(document.getElementById(data));
+      }
+
+      // Attach event listeners
+
+      document.body.addEventListener("dragover", dragoverHandler);
+      document.body.addEventListener("drop", dropHandler);
+
+      let mouseX = 0;
+      let mouseY = 0;
+      document.addEventListener("mousemove", logMousePosition);
+
+      function logMousePosition(e) {
+        // e.screenX and e.screenY provide coordinates relative to the screen
+        mouseX = e.screenX;
+        mouseY = e.screenY;
+      }
+
+      // Atualiza dados dos inputs
+      const pop = function (arg) {
+        let inpt = document.getElementsByTagName("input")[1];
+        inpt.value = arg;
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      /*
+      
+      WINDOW MANAGER
+
+      */
+
+      let ctf = 0;
+      let windowmanager = {
+        ctf: 0,
+        wframes: [],
+        createframe: function () {
+          let nwin = "";
+
+          this.wframes[this.ctf] = {};
+          this.wframes[this.ctf].id = "t_" + this.ctf;
+          this.wframes[this.ctf].z = 500;
+
+          if (
+            this.ctf == 0 &&
+            typeof $_GET["term"] != "undefined" &&
+            $_GET["term"] != null &&
+            $_GET["term"] != ""
+          ) {
+            this.wframes[0].x = 10;
+            this.wframes[0].y = 10;
+            this.wframes[0].w = 30;
+            this.wframes[0].h = 2;
+
+            let nwin = document.createElement("div");
+
+            nwin.setAttribute("class", "janela terminal");
+            nwin.setAttribute("id", this.wframes[0].id);
+            nwin.setAttribute("style", `z-index: ${this.wframes[0].z}`);
+            nwin.setAttribute(
+              "onclick",
+              `windowmanager.top('${this.wframes[0].id}')`
+            );
+            let conteudo = `&gt; <input class="janelaterminal" type="text" id="comandos">`;
+
+            document.getElementsByTagName("body")[0].appendChild(nwin);
+            document.getElementById(this.wframes[this.ctf].id).innerHTML =
+              conteudo;
+          } else {
+            this.wframes[this.ctf].x =
+              Math.random() * (window.innerWidth / 3) + 30;
+            this.wframes[this.ctf].y =
+              (Math.random() * window.innerHeight) / 3 + 30;
+            this.wframes[this.ctf].w = Math.random() * 400 + 300;
+            this.wframes[this.ctf].h = Math.random() * 300 + 200;
+
+            nwin = document.createElement("div");
+            nwin.setAttribute("draggable", "true");
+            nwin.setAttribute("class", "janela");
+            nwin.setAttribute("id", this.wframes[this.ctf].id);
+            nwin.setAttribute(
+              "style",
+              `z-index: ${this.wframes[this.ctf].z}; left: ${
+                this.wframes[this.ctf].x
+              }px; top: ${this.wframes[this.ctf].y}px; width: ${
+                this.wframes[this.ctf].w
+              }px; height: ${this.wframes[this.ctf].h}px;`
+            );
+            nwin.setAttribute(
+              "onclick",
+              `windowmanager.top('${this.wframes[this.ctf].id}')`
+            );
+            let conteudo = `
+            
+            <div class="zoomt" onclick="windowmanager.close('${
+              this.wframes[this.ctf].id
+            }')"><div class="bola"></div></div>
+            <div class="zoomt" onclick="zoom(this)"><div class="bolaf"></div></div>
+            <input class="janelatitulo" type="text" id="t_f${
+              this.ctf
+            }" onclick="windowmanager.top('${this.ctf}')" placeholder="">
+
+            <div id="m_f${this.ctf}" class="barramenu">
+              <a onclick="pop('');">Tudo</a><a onclick="pop('Básico');">Básico</a><a onclick="pop('Online');">Online</a><a onclick="pop('Desktop');">Desktop</a><a onclick="pop('Literate');">Notebook</a><a onclick="pop('Livecode');">Livecode</a><a onclick="pop('CLI');">CLI</a>
+            </div>
+            <div id="resultados" class="conteudo"></div>
+            
+            `;
+
+            document.getElementsByTagName("body")[0].appendChild(nwin);
+            document.getElementById(this.wframes[this.ctf].id).innerHTML =
+              conteudo;
+          }
+
+          if (
+            this.ctf > 0 &&
+            typeof $_GET["term"] != "undefined" &&
+            $_GET["term"] != null &&
+            $_GET["term"] != ""
+          ) {
+            document
+              .getElementById(this.wframes[this.ctf].id)
+              .addEventListener("dragstart", dragstartHandler);
+          } else {
+            document
+              .getElementById(this.wframes[this.ctf].id)
+              .addEventListener("dragstart", dragstartHandler);
+          }
+
+          this.top(this.wframes[this.ctf].id);
+
+          this.ctf++;
+        },
+        findframe: function (nome) {
+          qualframe = -1;
+
+          for (let i = 0; i < Object.keys(this.wframes).length; i++) {
+            if (this.wframes[Object.keys(this.wframes)[i]].id == nome) {
+              qualframe = Object.keys(this.wframes)[i];
+              break;
+            }
+          }
+
+          return qualframe;
+        },
+        top: function (who) {
+          for (let i = 0; i < Object.keys(this.wframes).length; i++) {
+            if (
+              typeof this.wframes[this.findframe(who)] != "undefined" &&
+              this.wframes[this.findframe(who)] != null
+            ) {
+              this.wframes[this.findframe(who)].z = 505;
+            }
+
+            let pelaordem = alphabeticobj(this.wframes, "z").reverse();
+
+            let topo = 500;
+            for (let i = 0; i < pelaordem.length; i++) {
+              this.wframes[this.findframe(pelaordem[i].id)].z = topo;
+              document.getElementById(pelaordem[i].id).style.zIndex = topo;
+              topo--;
+            }
+          }
+        },
+        close: function (who) {
+          let quem = this.findframe(who);
+          document.getElementById(who).remove();
+          this.wframes.splice(quem, 1);
+        },
+      };
+
+      if (
+        typeof $_GET["term"] != "undefined" &&
+        $_GET["term"] != null &&
+        $_GET["term"] != ""
+      ) {
+        windowmanager.createframe();
+      }
+    </script>
+
+    <div
+      onclick="windowmanager.createframe()"
+      style="
+        cursor: pointer;
+        position: fixed;
+        z-index: 800;
+        bottom: 30px;
+        right: 40px;
+        width: 80px;
+        height: 80px;
+        background-color: #db2964;
+        color: white;
+      "
+    >
+      novo
+    </div>
+  </body>
+</html>

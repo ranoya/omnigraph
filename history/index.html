@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+      html {
+        font-family: "Source Code Pro", monospace;
+        background-color: #f1f0ea;
+      }
+
+      .teste {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        border: 4px double black;
+        width: calc(100% - 5rem);
+        padding: 1rem;
+        box-shadow: 1rem 1rem #00000033;
+        margin: calc(1rem - 4px);
+        background-color: #fffef5;
+      }
+
+      .head {
+        background-color: black;
+        color: #fffef5;
+        width: 100%;
+        margin-left: -1rem;
+        margin-top: -1rem;
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+        font-weight: bolder;
+      }
+
+      .poe {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        border: 4px double black;
+        width: calc(100% - 3rem);
+        padding: 0;
+        box-shadow: 1rem 1rem #00000033;
+        margin: calc(1rem - 4px);
+        background-color: #fffef5;
+        /* resize: both; 
+        overflow: auto; */
+        overflow-y: hidden;
+        max-height: 80dvh;
+      }
+
+      ::-webkit-scrollbar {
+        width: 1rem;
+        background-color: #fffef5;
+        opacity: 0.2;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #383838 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 50%
+        );
+
+        background-image: repeating-linear-gradient(
+          45deg,
+          #adadad 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 25%
+        );
+        border-left: 1px solid black;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        width: 1rem;
+        background-color: black;
+      }
+
+      .poehead {
+        background-color: black;
+        color: #fffef5;
+        margin-left: 0;
+        margin-top: 0;
+        width: calc(100% - 2rem);
+        border: 0;
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-weight: bolder;
+        outline: 0;
+        max-height: 75dvh;
+      }
+
+      .poehead:focus {
+        outline: 0;
+      }
+
+      .input {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+      }
+
+      #resultados {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+        display: grid;
+        grid-template-columns: [init] 1fr 1fr 1fr 1fr [end];
+        gap: 0.25rem 1rem;
+        color: black;
+        height: calc(100% - 6rem + 3px);
+        overflow-y: auto;
+        max-height: calc(85dvh - 9rem);
+      }
+
+      #resultados div a {
+        text-decoration: none;
+        color: black;
+        padding: 4px;
+        margin: -2px;
+        transition: color 1.2s ease-out, background-color 1.2s ease-out;
+        background-color: #fffef5;
+        display: block;
+        cursor: pointer;
+      }
+
+      #resultados div:hover a {
+        background-color: #61605a;
+        transition: color 0.2s ease-in, background-color 0.2s ease-in;
+        color: white;
+      }
+
+      #menu {
+        padding: 0;
+        width: 100%;
+        border-bottom: 1px solid black;
+      }
+
+      #menu a {
+        color: black;
+        text-decoration: none;
+        font-weight: bolder;
+        border-right: 1px solid black;
+        display: inline-block;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        cursor: pointer;
+      }
+
+      #menu a:hover {
+        background-color: #00000088;
+        color: white;
+      }
+    </style>
+
+    <script src="https://datat.vercel.app/basics.js"></script>
+  </head>
+
+  <body>
+    <div class="poe">
+      <input
+        class="poehead"
+        type="text"
+        id="MyInputElement"
+        placeholder="Pesquise..."
+      />
+      <div id="menu">
+        <a onclick="pop('');">Tudo</a><a onclick="pop('Básico');">Básico</a
+        ><a onclick="pop('Online');">Online</a
+        ><a onclick="pop('Desktop');">Desktop</a
+        ><a onclick="pop('Literate');">Notebook</a
+        ><a onclick="pop('Livecode');">Livecode</a
+        ><a onclick="pop('CLI');">CLI</a>
+      </div>
+      <div id="resultados"></div>
+    </div>
+
+    <br /><br />
+
+    <div class="teste">
+      A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G
+      H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D
+      E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A
+      B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H
+      I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E
+      F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B
+      C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I
+      J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F
+      G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C
+      D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J
+      A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G
+      H I J A B C D E F G H I J A B C D E F G H I J A B C D E F G H I J A B C D
+      E F G H I J A B C D E F G H I J
+    </div>
+
+    <br />
+
+    <div class="teste">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec iaculis
+      massa. Pellentesque sed facilisis mauris. Nullam nec fermentum mauris,
+      mattis imperdiet tellus. Curabitur non elementum tellus. Nunc tempus leo
+      ligula, eu eleifend nisl maximus sit amet. Nunc et nunc dictum, tristique
+      arcu at, pretium augue. Nullam dignissim massa neque, ac aliquet tellus
+      tristique eu. Ut vehicula ullamcorper turpis, vitae consequat lorem
+      sollicitudin vel. Cras feugiat malesuada odio, sit amet rutrum mauris
+      posuere non. Sed pretium hendrerit leo id posuere. Sed in tortor
+      convallis, bibendum mi vestibulum, mollis dui. Aliquam cursus mi non leo
+      pharetra, eu aliquet tellus hendrerit. Sed dui lacus, sodales ac pulvinar
+      ut, bibendum quis nulla. Suspendisse potenti. Cras in venenatis neque.
+      Suspendisse fringilla, nunc ut congue varius, nulla neque ultricies justo,
+      et vehicula nulla est sed tortor. Quisque eleifend ac tellus eu sodales.
+      Nunc tortor massa, convallis sed lacinia vitae, vehicula at ipsum. Donec
+      id malesuada orci, vitae vestibulum velit. Phasellus vitae egestas massa.
+      Donec augue justo, finibus eu cursus in, mattis ac nibh. Etiam erat
+      ligula, volutpat sit amet facilisis et, blandit in nunc. Maecenas nisl
+      justo, volutpat ut lobortis at, porttitor at nisi. Phasellus a vulputate
+      tortor, non scelerisque enim. Vivamus in ligula non ex elementum viverra.
+      Donec ut sollicitudin augue. Pellentesque sagittis urna eu rutrum porta.
+      Proin blandit euismod egestas. Ut non lacus fermentum, rutrum lorem a,
+      facilisis magna. Proin maximus tellus non sem ullamcorper, vitae venenatis
+      metus feugiat.
+    </div>
+
+    <br /><br />
+
+    <div class="teste">
+      <div class="head">Label</div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec iaculis
+      massa. Pellentesque sed facilisis mauris. Nullam nec fermentum mauris,
+      mattis imperdiet tellus. Curabitur non elementum tellus. Nunc tempus leo
+      ligula, eu eleifend nisl maximus sit amet. Nunc et nunc dictum, tristique
+      arcu at, pretium augue. Nullam dignissim massa neque, ac aliquet tellus
+      tristique eu. Ut vehicula ullamcorper turpis, vitae consequat lorem
+      sollicitudin vel. Cras feugiat malesuada odio, sit amet rutrum mauris
+      posuere non. Sed pretium hendrerit leo id posuere. Sed in tortor
+      convallis, bibendum mi vestibulum, mollis dui. Aliquam cursus mi non leo
+      pharetra, eu aliquet tellus hendrerit. Sed dui lacus, sodales ac pulvinar
+      ut, bibendum quis nulla. Suspendisse potenti. Cras in venenatis neque.
+      Suspendisse fringilla, nunc ut congue varius, nulla neque ultricies justo,
+      et vehicula nulla est sed tortor. Quisque eleifend ac tellus eu sodales.
+      Nunc tortor massa, convallis sed lacinia vitae, vehicula at ipsum. Donec
+      id malesuada orci, vitae vestibulum velit. Phasellus vitae egestas massa.
+      Donec augue justo, finibus eu cursus in, mattis ac nibh. Etiam erat
+      ligula, volutpat sit amet facilisis et, blandit in nunc. Maecenas nisl
+      justo, volutpat ut lobortis at, porttitor at nisi. Phasellus a vulputate
+      tortor, non scelerisque enim. Vivamus in ligula non ex elementum viverra.
+      Donec ut sollicitudin augue. Pellentesque sagittis urna eu rutrum porta.
+      Proin blandit euismod egestas. Ut non lacus fermentum, rutrum lorem a,
+      facilisis magna. Proin maximus tellus non sem ullamcorper, vitae venenatis
+      metus feugiat.
+    </div>
+
+    <script>
+      let col80 = function () {
+        document.getElementsByTagName("html")[0].style.fontSize =
+          document.body.clientWidth / 80 + "px";
+      };
+
+      window.addEventListener("resize", function (event) {
+        col80();
+      });
+
+      document.addEventListener("onload", function (event) {});
+
+      col80();
+    </script>
+
+    <script>
+      // Atualiza dados dos inputs
+      const pop = function (arg) {
+        let inpt = document.getElementsByTagName("input")[0];
+        inpt.value = arg;
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      omnifilter = function (arr) {
+        console.table(arr);
+
+        let code = "";
+        for (let i = 0; i < arr.length; i++) {
+          code += `<div><a onclick="window.open('${arr[i].Link}', '_blank');">${arr[i].Name}</a></div>`;
+        }
+        document.getElementById("resultados").innerHTML = code;
+      };
+
+      omnifilterfetchcsvdata(
+        GoogleSheetCsvURL(
+          "https://docs.google.com/spreadsheets/d/10wpfmMWn3igQF4rJBYCo8OR90igO1tfKwcmrot0ult0/edit#gid=0"
+        ),
+        "MyInputElement"
+      );
+    </script>
+  </body>
+</html>
