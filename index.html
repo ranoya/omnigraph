@@ -708,7 +708,7 @@
               dados[i].icon != null &&
               dados[i].icon != ""
             ) {
-              appsdesktop += `<div style="width: 100%; aspect-ratio: 1/1; cursor: pointer;" onclick='${dados[i].instruction}()'>${dados[i].icon}</div>`;
+              appsdesktop += `<div style="width: 3rem; aspect-ratio: 1/1; cursor: pointer;" onclick='${dados[i].instruction}()'>${dados[i].icon}</div>`;
             }
 
             let scrjs = document.createElement("script");
@@ -723,6 +723,7 @@
       }
     </script>
 
+    <!--
     <div
       onclick="windowmanager.createframe()"
       style="
@@ -738,6 +739,6 @@
       "
     >
       novo
-    </div>
+    </div> -->
   </body>
 </html>
