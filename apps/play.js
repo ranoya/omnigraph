@@ -16,13 +16,13 @@ play = function (p) {
       <style>
       .editores div {
         text-decoration: none;
-        border: 1px solid #00000066;
+        outline: 3px solid #00000033;
         display: block;
         cursor: pointer;
       }
 
       .editores div:hover {
-        border: 1px solid #000000ff;
+        outline: 3px solid #000000ff;
       }
 
       </style>
