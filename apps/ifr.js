@@ -1,4 +1,4 @@
-ifr = function (t, u) {
+ifr = function (t, u, c) {
   let id = windowmanager.createframe(t);
 
   let code = `
@@ -23,4 +23,8 @@ ifr = function (t, u) {
       `;
 
   document.getElementById("res" + id).innerHTML = code;
+
+  if (typeof c != "undefined" && c != null && c != "") {
+    document.getElementById("res" + id).style.backgroundColor = c;
+  }
 };
