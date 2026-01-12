@@ -18,20 +18,20 @@ play = function (p) {
     let code = `
     
       <style>
-      .editores div {
+      .jogos_thumb div {
         text-decoration: none;
         outline: 3px solid #00000033;
         display: block;
         cursor: pointer;
       }
 
-      .editores div:hover {
+      .jogos_thumb div:hover {
         outline: 3px solid #000000ff;
       }
 
       </style>
     
-      <div class="editores" style='display: grid; width: 100%; grid-template-columns: [init] 1fr 1fr 1fr 1fr [end]; gap: 20px 20px;'>`;
+      <div class="jogos_thumb" style='display: grid; width: 100%; grid-template-columns: [init] 1fr 1fr 1fr 1fr [end]; gap: 20px 20px;'>`;
     for (let i = 0; i < arr.length; i++) {
       code += `<div onclick="ifr('${arr[i].Name}', '${decodeURI(
         arr[i].Link
