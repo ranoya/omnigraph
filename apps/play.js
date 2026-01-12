@@ -14,14 +14,14 @@ play = function (p) {
     let code = `
     
       <style>
-      .editores div a {
+      .editores div {
         text-decoration: none;
         border: 1px solid #00000066;
         display: block;
         cursor: pointer;
       }
 
-      .editores div:hover a {
+      .editores div:hover {
         border: 1px solid #000000ff;
       }
 
@@ -29,7 +29,7 @@ play = function (p) {
     
       <div class="editores" style='display: grid; width: 100%; grid-template-columns: [init] 1fr 1fr 1fr 1fr [end]; gap: 20px 20px;'>`;
     for (let i = 0; i < arr.length; i++) {
-      code += `<div onclick="ifr(${arr[i].Name}, ${arr[i].Link});" style="width: 100%; aspect-ratio: 4/3; background-repeat: no-repeat; background-size: cover; background-position: center center; background-image: url(${arr[i].screenshots})"></div>`;
+      code += `<div onclick="ifr('${arr[i].Name}', '${arr[i].Link}');" style="width: 100%; aspect-ratio: 4/3; background-repeat: no-repeat; background-size: cover; background-position: center center; background-image: url(${arr[i].screenshots})"></div>`;
     }
 
     code += `</div>`;
