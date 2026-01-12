@@ -14,12 +14,13 @@ ifr = function (t, u, c) {
             width: calc(100% - 10px) !important;
             max-height: unset !important;
             height: 100%;
-            height: calc(100% - 5rem + 2px) !important;;
+            height: calc(100% - 5rem + 3px) !important;
             padding: 5px !important;
+            padding-top: 7px !important;
         
         }
       </style>
-      <iframe frameborder='0' style='width: calc(100%);height: 100%;height: calc(100% - 5rem + 13px);' src='${u}'></iframe>
+      <iframe frameborder='0' style='width: calc(100%);height: 100%;height: calc(100% - 5px);' src='${u}'></iframe>
       `;
 
   document.getElementById("res" + id).innerHTML = code;
