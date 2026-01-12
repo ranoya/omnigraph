@@ -11,6 +11,9 @@ play = function (p) {
   });
 
   omnifilter = function (arr) {
+    for (let i = 0; i < arr.length; i++) {
+      arr[i].Name.toString().replace(/'/g, "&apos;");
+    }
     let code = `
     
       <style>
@@ -29,10 +32,7 @@ play = function (p) {
     
       <div class="editores" style='display: grid; width: 100%; grid-template-columns: [init] 1fr 1fr 1fr 1fr [end]; gap: 20px 20px;'>`;
     for (let i = 0; i < arr.length; i++) {
-      code += `<div onclick="ifr('${arr[i].Name.replace(
-        /\'/g,
-        "&apos;"
-      )}', '${decodeURI(
+      code += `<div onclick="ifr('${arr[i].Name}', '${decodeURI(
         arr[i].Link
       )}');" style="width: 100%; aspect-ratio: 4/3; background-repeat: no-repeat; background-size: cover; background-position: center center; background-image: url(${
         arr[i].screenshots
