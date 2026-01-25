@@ -428,14 +428,9 @@
         let e = window.event;
         let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
         let deltaY = deskposoriginalY + (e.clientY - panoriginalY) + "px";
-        getComputedStyle(document.documentElement).setPropertyValue(
-          "--desk-x",
-          deltaX,
-        );
-        getComputedStyle(document.documentElement).setPropertyValue(
-          "--desk-y",
-          deltaY,
-        );
+
+        document.documentElement.style.setProperty("--desk-x", deltaX);
+        document.documentElement.style.setProperty("--desk-y", deltaY);
 
         paning = true;
       };
