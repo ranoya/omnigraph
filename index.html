@@ -491,7 +491,7 @@
       }
 
       let panstart = function (e) {
-        let quemsemove = ev.dataTransfer.getData("text");
+        let quemsemove = e.dataTransfer.getData("text");
         console.log(quemsemove);
         paning = true;
         panoriginalX = e.clientX;
