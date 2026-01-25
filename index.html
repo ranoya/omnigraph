@@ -58,15 +58,6 @@
         border: 0;
       }
 
-      #fundo {
-        position: fixed;
-        top: 0;
-        width: 100vw;
-        height: 100dvh;
-        background-color: transparent;
-        z-index: 1;
-      }
-
       #palette {
         position: fixed;
         top: 0px;
@@ -337,7 +328,6 @@
   </head>
 
   <body>
-    <div id="fundo"></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -409,6 +399,11 @@
       let objectX = 0;
       let objectY = 0;
       let quemsemove = "";
+      let paning = false;
+      let panoriginalX = 0;
+      let panoriginalY = 0;
+      let deskposoriginalX = 0;
+      let deskposoriginalY = 0;
 
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
@@ -495,8 +490,27 @@
         //ev.target.appendChild(document.getElementById(data));
       }
 
+      let panstart = function (e) {
+        let quemsemove = ev.dataTransfer.getData("text");
+        console.log(quemsemove);
+        paning = true;
+        panoriginalX = e.clientX;
+        panoriginalY = e.clientY;
+        deskposoriginalX = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-x",
+          ),
+        );
+        deskposoriginalY = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-y",
+          ),
+        );
+      };
+
       // Attach event listeners
 
+      document.body.addEventListener("dragstart", panstart);
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
 
@@ -523,28 +537,6 @@
       
       */
 
-      let paning = false;
-      let panoriginalX = 0;
-      let panoriginalY = 0;
-      let deskposoriginalX = 0;
-      let deskposoriginalY = 0;
-
-      let panstart = function (e) {
-        paning = true;
-        panoriginalX = e.clientX;
-        panoriginalY = e.clientY;
-        deskposoriginalX = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-x",
-          ),
-        );
-        deskposoriginalY = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-y",
-          ),
-        );
-      };
-
       let panend = function (e) {
         paning = false;
         let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
@@ -563,10 +555,6 @@
           document.documentElement.style.setProperty("--desk-y", delatY);
         }
       };
-
-      document.getElementById("fundo").addEventListener("dragover", panstart);
-      document.getElementById("fundo").addEventListener("mousemove", panmove);
-      document.getElementById("fundo").addEventListener("mouseup", panend);
 
       /*
       
