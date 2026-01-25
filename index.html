@@ -340,7 +340,13 @@
   </head>
 
   <body>
-    <div id="mousetrace" draggable="true"></div>
+    <div
+      id="mousetrace"
+      ondrag="pan(e)"
+      ondragend="stoppan(e)"
+      ondragstart="starpan(e)"
+      ondragleave="stoppan(e)"
+    ></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -418,6 +424,18 @@
       let deskposoriginalX = 0;
       let deskposoriginalY = 0;
 
+      let pan = function (ev) {
+        console.log("pan");
+      };
+
+      let startpan = function (ev) {
+        console.log("panstart");
+      };
+
+      let stoppan = function (ev) {
+        console.log("panstart");
+      };
+
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
         for (let i = 0; i < gerenciatopo.length; i++) {
@@ -436,12 +454,6 @@
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
 
-        console.log("quem é você? " + ev.target.id);
-        if (ev.target.id == "mousetrace") {
-          paning = true;
-        } else {
-          paning = false;
-        }
         let gerenciatopo = document.getElementsByClassName("janela");
         for (let i = 0; i < gerenciatopo.length; i++) {
           gerenciatopo[i].style.zIndex = "510";
@@ -487,47 +499,26 @@
         dragendX = ev.clientX;
         dragendY = ev.clientY;
 
-        console.log(ev.target.id);
+        document.getElementById(quemsemove).style.left = `${
+          dragendX - dragstartX + objectX
+        }px`;
+        document.getElementById(quemsemove).style.top = `${
+          dragendY - dragstartY + objectY
+        }px`;
 
-        if (ev.target.id == "mousetrace") {
-          paning = false;
-          let deskx = getComputedStyle(document.documentElement)
-            .getPropertyValue("--desk-x")
-            .replace("px", "");
-          let desky = getComputedStyle(document.documentElement)
-            .getPropertyValue("--desk-y")
-            .replace("px", "");
+        let qualjanela = windowmanager.findframe(quemsemove);
+        // console.log("quemsemove = " + quemsemove);
+        // console.log("qualjanela = " + qualjanela);
 
-          document.documentElement.style.setProperty(
-            "--desk-x",
-            parseFloat(deskx) + (ev.clientX - dragstartX) + "px",
-          );
-          document.documentElement.style.setProperty(
-            "--desk-y",
-            parseFloat(desky) + (ev.clientY - dragstartY) + "px",
-          );
-        } else {
-          document.getElementById(quemsemove).style.left = `${
-            dragendX - dragstartX + objectX
-          }px`;
-          document.getElementById(quemsemove).style.top = `${
-            dragendY - dragstartY + objectY
-          }px`;
+        windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
+        windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
+        windowmanager.top(quemsemove);
 
-          let qualjanela = windowmanager.findframe(quemsemove);
-          // console.log("quemsemove = " + quemsemove);
-          // console.log("qualjanela = " + qualjanela);
-
-          windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
-          windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
-          windowmanager.top(quemsemove);
-
-          // Get the data, which is the id of the dragged element
-          // const data = ev.dataTransfer.getData("text");
-          // console.log(data);
-          // Append the dragged element to the drop target
-          //ev.target.appendChild(document.getElementById(data));
-        }
+        // Get the data, which is the id of the dragged element
+        // const data = ev.dataTransfer.getData("text");
+        // console.log(data);
+        // Append the dragged element to the drop target
+        //ev.target.appendChild(document.getElementById(data));
       }
 
       // Attach event listeners
@@ -544,19 +535,16 @@
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        console.log("paning: " + paning);
+        document.documentElement.style.setProperty(
+          "--m-x",
+          e.clientX - 10 + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--m-y",
+          e.clientY - 10 + "px",
+        );
 
-        if (!paning) {
-          document.documentElement.style.setProperty(
-            "--m-x",
-            e.clientX - 10 + "px",
-          );
-          document.documentElement.style.setProperty(
-            "--m-y",
-            e.clientY - 10 + "px",
-          );
-        }
-
+        /*
         if (paning) {
           let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
           let delatY = deskposoriginalY + (e.clientY - panoriginalY) + "px";
@@ -564,6 +552,7 @@
           document.documentElement.style.setProperty("--desk-x", deltaX);
           document.documentElement.style.setProperty("--desk-y", delatY);
         }
+        */
       }
 
       // Atualiza dados dos inputs
