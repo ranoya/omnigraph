@@ -486,9 +486,9 @@
         dragendX = ev.clientX;
         dragendY = ev.clientY;
 
-        console.log(quemsemove);
+        console.log(ev.target.id);
 
-        if (quemsemove == "mousetrace") {
+        if (ev.target.id == "mousetrace") {
           paning = false;
           let deskx = getComputedStyle(document.documentElement)
             .getPropertyValue("--desk-x")
