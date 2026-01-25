@@ -18,6 +18,8 @@
 
         --desk-x: 0px;
         --desk-y: 0px;
+        --m-x: 0px;
+        --m-y: 0px;
       }
 
       input::placeholder {
@@ -56,6 +58,16 @@
         margin: 0;
         padding: 0;
         border: 0;
+      }
+
+      #mousetrace {
+        position: fixed;
+        width: 20px;
+        height: 20px;
+        background-color: black;
+        z-index: 2;
+        top: var(--m-y);
+        left: var(--m-x);
       }
 
       #palette {
@@ -522,6 +534,8 @@
         // e.screenX and e.screenY provide coordinates relative to the screen
         mouseX = e.screenX;
         mouseY = e.screenY;
+        document.documentElement.style.setProperty("--m-x", mouseX - 10 + "px");
+        document.documentElement.style.setProperty("--m-y", mouseY - 10 + "px");
       }
 
       // Atualiza dados dos inputs
