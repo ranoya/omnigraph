@@ -542,14 +542,19 @@
         // e.screenX and e.screenY provide coordinates relative to the screen
         mouseX = e.clientX;
         mouseY = e.clientY;
-        document.documentElement.style.setProperty(
-          "--m-x",
-          e.clientX - 10 + "px",
-        );
-        document.documentElement.style.setProperty(
-          "--m-y",
-          e.clientY - 10 + "px",
-        );
+
+        console.log("paning: " + paning);
+
+        if (!paning) {
+          document.documentElement.style.setProperty(
+            "--m-x",
+            e.clientX - 10 + "px",
+          );
+          document.documentElement.style.setProperty(
+            "--m-y",
+            e.clientY - 10 + "px",
+          );
+        }
 
         if (paning) {
           let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
