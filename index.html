@@ -486,10 +486,10 @@
         dragendY = ev.clientY;
 
         document.getElementById(quemsemove).style.left = `${
-          dragendX - dragstartX + objectX - pDeltaX
+          dragendX - dragstartX + objectX + pDeltaX
         }px`;
         document.getElementById(quemsemove).style.top = `${
-          dragendY - dragstartY + objectY - pDeltaY
+          dragendY - dragstartY + objectY + pDeltaY
         }px`;
 
         let qualjanela = windowmanager.findframe(quemsemove);
@@ -497,9 +497,9 @@
         // console.log("qualjanela = " + qualjanela);
 
         windowmanager.wframes[qualjanela].x =
-          dragendX - dragstartX + objectX - pDeltaX;
+          dragendX - dragstartX + objectX + pDeltaX;
         windowmanager.wframes[qualjanela].y =
-          dragendY - dragstartY + objectY - pDeltaY;
+          dragendY - dragstartY + objectY + pDeltaY;
         windowmanager.top(quemsemove);
 
         // Get the data, which is the id of the dragged element
@@ -654,9 +654,9 @@
               conteudo;
           } else {
             this.wframes[this.ctf].x =
-              Math.random() * (window.innerWidth / 3) + 30 - pDeltaX;
+              Math.random() * (window.innerWidth / 3) + 30 + pDeltaX;
             this.wframes[this.ctf].y =
-              (Math.random() * window.innerHeight) / 3 + 30 - pDeltaY;
+              (Math.random() * window.innerHeight) / 3 + 30 + pDeltaY;
             this.wframes[this.ctf].w = Math.random() * 400 + 300;
             this.wframes[this.ctf].h = Math.random() * 300 + 200;
 
