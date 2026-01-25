@@ -340,13 +340,7 @@
   </head>
 
   <body>
-    <div
-      id="mousetrace"
-      ondrag="pan(e)"
-      ondragend="stoppan()"
-      ondragstart="startpan()"
-      ondragleave="stoppan()"
-    ></div>
+    <div id="mousetrace"></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -821,6 +815,19 @@
           // document.getElementById("addons").innerHTML = customplugins;
         });
       }
+
+      // adiciona listeners do mousetrace
+
+      document.getElementById("mousetrace").addEventListener("drag", pan(e));
+      document
+        .getElementById("mousetrace")
+        .addEventListener("dragend", stoppan(e));
+      document
+        .getElementById("mousetrace")
+        .addEventListener("dragleave", stoppan(e));
+      document
+        .getElementById("mousetrace")
+        .addEventListener("dragstart", startpan(e));
     </script>
 
     <!--
