@@ -58,6 +58,7 @@
         margin: 0;
         padding: 0;
         border: 0;
+        cursor: move;
       }
 
       #mousetrace {
@@ -341,13 +342,6 @@
   </head>
 
   <body>
-    <div
-      id="mousetrace"
-      ondrag="pan()"
-      ondragend="stoppan()"
-      ondragstart="startpan()"
-      ondragleave="stoppan()"
-    ></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -419,45 +413,6 @@
       let objectX = 0;
       let objectY = 0;
       let quemsemove = "";
-      let paning = false;
-      let panoriginalX = 0;
-      let panoriginalY = 0;
-      let deskposoriginalX = 0;
-      let deskposoriginalY = 0;
-
-      let pan = function () {
-        let e = window.event;
-        let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
-        let deltaY = deskposoriginalY + (e.clientY - panoriginalY) + "px";
-
-        document.documentElement.style.setProperty("--desk-x", deltaX);
-        document.documentElement.style.setProperty("--desk-y", deltaY);
-
-        paning = true;
-      };
-
-      let startpan = function () {
-        let e = window.event;
-        console.log("pan x = " + e.clientX + " y = " + e.clientY);
-        panoriginalX = e.clientX;
-        panoriginalY = e.clientY;
-        deskposoriginalX = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-x",
-          ),
-        );
-        deskposoriginalY = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-y",
-          ),
-        );
-        paning = true;
-      };
-
-      let stoppan = function () {
-        console.log("panend");
-        paning = false;
-      };
 
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
@@ -537,8 +492,6 @@
         windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
         windowmanager.top(quemsemove);
 
-        paning = false;
-
         // Get the data, which is the id of the dragged element
         // const data = ev.dataTransfer.getData("text");
         // console.log(data);
@@ -559,17 +512,6 @@
         // e.screenX and e.screenY provide coordinates relative to the screen
         mouseX = e.clientX;
         mouseY = e.clientY;
-
-        document.documentElement.style.setProperty(
-          "--m-x",
-          e.clientX - 10 + "px",
-        );
-        document.documentElement.style.setProperty(
-          "--m-y",
-          e.clientY - 10 + "px",
-        );
-
-        console.log(paning);
       }
 
       // Atualiza dados dos inputs
