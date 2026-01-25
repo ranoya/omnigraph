@@ -514,6 +514,10 @@
         // e.screenX and e.screenY provide coordinates relative to the screen
         mouseX = e.clientX;
         mouseY = e.clientY;
+
+        if (pan) {
+          console.log(ev.clientX - origemx + " , " + ev.clientY - origemy);
+        }
       }
 
       // Atualiza dados dos inputs
@@ -778,19 +782,21 @@
 
       // quando rola drag do body
 
+      let pan = false;
       let origemx = 0;
       let origemy = 0;
-      document.body.addEventListener("dragstart", function (ev) {
+      document.body.addEventListener("mousedown", function (ev) {
         ev.preventDefault();
         // ev.dataTransfer.dropEffect = "move";
         origemx = ev.clientX;
         origemy = ev.clientY;
       });
 
-      document.body.addEventListener("drag", function (ev) {
+      document.body.addEventListener("mouseup", function (ev) {
         ev.preventDefault();
         // ev.dataTransfer.dropEffect = "move";
-        console.log(ev.clientX - origemx + " , " + ev.clientY - origemy);
+
+        pan = false;
       });
     </script>
 
