@@ -483,18 +483,20 @@
         dragendY = ev.clientY;
 
         document.getElementById(quemsemove).style.left = `${
-          dragendX - dragstartX + objectX
+          dragendX - dragstartX + objectX - pDeltaX
         }px`;
         document.getElementById(quemsemove).style.top = `${
-          dragendY - dragstartY + objectY
+          dragendY - dragstartY + objectY - pDeltaY
         }px`;
 
         let qualjanela = windowmanager.findframe(quemsemove);
         // console.log("quemsemove = " + quemsemove);
         // console.log("qualjanela = " + qualjanela);
 
-        windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
-        windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
+        windowmanager.wframes[qualjanela].x =
+          dragendX - dragstartX + objectX - pDeltaX;
+        windowmanager.wframes[qualjanela].y =
+          dragendY - dragstartY + objectY - pDeltaY;
         windowmanager.top(quemsemove);
 
         // Get the data, which is the id of the dragged element
