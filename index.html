@@ -417,6 +417,8 @@
       let pDeltaX = 0;
       let pDeltaY = 0;
       let controlpan = false;
+      let actualdeskpanx = 0;
+      let actualdeskpany = 0;
 
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
@@ -522,6 +524,12 @@
           // ev.dataTransfer.dropEffect = "move";
           origemx = ev.clientX;
           origemy = ev.clientY;
+          actualdeskpanx = getComputedStyle(document.body).getPropertyValue(
+            "--desk-x",
+          );
+          actualdeskpany = getComputedStyle(document.body).getPropertyValue(
+            "--desk-y",
+          );
           pan = true;
         }
       };
@@ -566,13 +574,6 @@
 
           pDeltaX = e.clientX - origemx;
           pDeltaY = e.clientY - origemy;
-
-          let actualdeskpanx = getComputedStyle(document.body).getPropertyValue(
-            "--desk-x",
-          );
-          let actualdeskpany = getComputedStyle(document.body).getPropertyValue(
-            "--desk-y",
-          );
 
           document.documentElement.style.setProperty(
             "--desk-x",
