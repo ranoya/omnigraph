@@ -413,6 +413,8 @@
       let objectX = 0;
       let objectY = 0;
       let quemsemove = "";
+      let pDeltaX = 0;
+      let pDeltaY = 0;
 
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
@@ -773,6 +775,23 @@
           // document.getElementById("addons").innerHTML = customplugins;
         });
       }
+
+      // quando rola drag do body
+
+      let origemx = 0;
+      let origemy = 0;
+      document.body.addEventListener("dragstart", function (ev) {
+        ev.preventDefault();
+        // ev.dataTransfer.dropEffect = "move";
+        origemx = ev.clientX;
+        origemy = ev.clientY;
+      });
+
+      document.body.addEventListener("drag", function (ev) {
+        ev.preventDefault();
+        // ev.dataTransfer.dropEffect = "move";
+        console.log(ev.clientX - origemx + " , " + ev.clientY - origemy);
+      });
     </script>
 
     <!--
