@@ -426,12 +426,35 @@
 
       let pan = function () {
         let e = window.event;
-        console.log("pan x = " + e.clientX + " y = " + e.clientY);
+        let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
+        let deltaY = deskposoriginalY + (e.clientY - panoriginalY) + "px";
+        getComputedStyle(document.documentElement).setPropertyValue(
+          "--desk-x",
+          deltaX,
+        );
+        getComputedStyle(document.documentElement).setPropertyValue(
+          "--desk-y",
+          deltaY,
+        );
+
         paning = true;
       };
 
       let startpan = function () {
-        console.log("panstart");
+        let e = window.event;
+        console.log("pan x = " + e.clientX + " y = " + e.clientY);
+        panoriginalX = e.clientX;
+        panoriginalY = e.clientY;
+        deskposoriginalX = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-x",
+          ),
+        );
+        deskposoriginalY = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-y",
+          ),
+        );
         paning = true;
       };
 
