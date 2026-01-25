@@ -430,6 +430,7 @@
       };
 
       function dragstartHandler(ev) {
+        pan = false;
         // Add the target element's id to the data transfer object
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
@@ -463,6 +464,7 @@
       }
 
       function dragoverHandler(ev) {
+        pan = false;
         // Prevent default behavior to allow drop
         ev.preventDefault();
         ev.dataTransfer.dropEffect = "move";
@@ -501,10 +503,33 @@
         //ev.target.appendChild(document.getElementById(data));
       }
 
+      let startpan = function () {
+        let ev = window.event;
+        ev.preventDefault();
+        // ev.dataTransfer.dropEffect = "move";
+        origemx = ev.clientX;
+        origemy = ev.clientY;
+        pan = true;
+      };
+
+      let stoppan = function () {
+        let ev = window.event;
+        ev.preventDefault();
+        // ev.dataTransfer.dropEffect = "move";
+        pan = false;
+      };
+
       // Attach event listeners
+
+      let pan = false;
+      let origemx = 0;
+      let origemy = 0;
 
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
+
+      document.body.addEventListener("mousedown", startpan);
+      document.body.addEventListener("mouseup", stoppan);
 
       let mouseX = 0;
       let mouseY = 0;
@@ -779,25 +804,6 @@
           // document.getElementById("addons").innerHTML = customplugins;
         });
       }
-
-      // quando rola drag do body
-
-      let pan = false;
-      let origemx = 0;
-      let origemy = 0;
-      document.body.addEventListener("mousedown", function (ev) {
-        ev.preventDefault();
-        // ev.dataTransfer.dropEffect = "move";
-        origemx = ev.clientX;
-        origemy = ev.clientY;
-      });
-
-      document.body.addEventListener("mouseup", function (ev) {
-        ev.preventDefault();
-        // ev.dataTransfer.dropEffect = "move";
-
-        pan = false;
-      });
     </script>
 
     <!--
