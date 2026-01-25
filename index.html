@@ -473,28 +473,27 @@
       };
 
       function dragstartHandler(ev) {
-        if (!paning) {
-          // Add the target element's id to the data transfer object
-          ev.dataTransfer.setData("text/plain", ev.target.id);
-          ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
+        // Add the target element's id to the data transfer object
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+        ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
 
-          let gerenciatopo = document.getElementsByClassName("janela");
-          for (let i = 0; i < gerenciatopo.length; i++) {
-            gerenciatopo[i].style.zIndex = "510";
-          }
-          document.getElementById(ev.target.id).style.zIndex = "510";
+        let gerenciatopo = document.getElementsByClassName("janela");
+        for (let i = 0; i < gerenciatopo.length; i++) {
+          gerenciatopo[i].style.zIndex = "510";
+        }
+        document.getElementById(ev.target.id).style.zIndex = "510";
 
-          // console.log(ev.target.id);
-          dragstartX = ev.clientX;
-          dragstartY = ev.clientY;
-          objectX = document
-            .getElementById(ev.target.id)
-            .getBoundingClientRect().left;
-          objectY = document
-            .getElementById(ev.target.id)
-            .getBoundingClientRect().top;
-          quemsemove = ev.target.id;
-          /* console.log(
+        // console.log(ev.target.id);
+        dragstartX = ev.clientX;
+        dragstartY = ev.clientY;
+        objectX = document
+          .getElementById(ev.target.id)
+          .getBoundingClientRect().left;
+        objectY = document
+          .getElementById(ev.target.id)
+          .getBoundingClientRect().top;
+        quemsemove = ev.target.id;
+        /* console.log(
           "Origem: " +
             objectX +
             ", " +
@@ -504,44 +503,39 @@
             ", " +
             mouseY
         ); */
-        }
       }
 
       function dragoverHandler(ev) {
-        if (!paning) {
-          // Prevent default behavior to allow drop
-          ev.preventDefault();
-          ev.dataTransfer.dropEffect = "move";
-          const data = ev.dataTransfer.getData("text");
-          // console.log("eita: " + data);
-        }
+        // Prevent default behavior to allow drop
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+        const data = ev.dataTransfer.getData("text");
+        // console.log("eita: " + data);
       }
 
       function dropHandler(ev) {
-        if (!paning) {
-          let quemsemove = ev.dataTransfer.getData("text");
-          // console.log(ev.screenX + " " + ev.screenY);
-          // console.log("deltaX: " + (ev.screenX - dragstartX));
-          // console.log("deltaY: " + (ev.screenY - dragstartY));
-          ev.preventDefault();
-          dragendX = ev.clientX;
-          dragendY = ev.clientY;
+        let quemsemove = ev.dataTransfer.getData("text");
+        // console.log(ev.screenX + " " + ev.screenY);
+        // console.log("deltaX: " + (ev.screenX - dragstartX));
+        // console.log("deltaY: " + (ev.screenY - dragstartY));
+        ev.preventDefault();
+        dragendX = ev.clientX;
+        dragendY = ev.clientY;
 
-          document.getElementById(quemsemove).style.left = `${
-            dragendX - dragstartX + objectX
-          }px`;
-          document.getElementById(quemsemove).style.top = `${
-            dragendY - dragstartY + objectY
-          }px`;
+        document.getElementById(quemsemove).style.left = `${
+          dragendX - dragstartX + objectX
+        }px`;
+        document.getElementById(quemsemove).style.top = `${
+          dragendY - dragstartY + objectY
+        }px`;
 
-          let qualjanela = windowmanager.findframe(quemsemove);
-          // console.log("quemsemove = " + quemsemove);
-          // console.log("qualjanela = " + qualjanela);
+        let qualjanela = windowmanager.findframe(quemsemove);
+        // console.log("quemsemove = " + quemsemove);
+        // console.log("qualjanela = " + qualjanela);
 
-          windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
-          windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
-          windowmanager.top(quemsemove);
-        }
+        windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
+        windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
+        windowmanager.top(quemsemove);
 
         paning = false;
 
