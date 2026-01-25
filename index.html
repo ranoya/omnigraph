@@ -340,7 +340,7 @@
   </head>
 
   <body>
-    <div id="mousetrace"></div>
+    <div id="mousetrace" onmousedown="panstart()"></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -533,9 +533,9 @@
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
 
-      document.document
+      /* document.document
         .getElementById("mousetrace")
-        .addEventListener("mousedown", panstart);
+        .addEventListener("mousedown", panstart); */
       document.body.addEventListener("mouseup", panend);
 
       let mouseX = 0;
