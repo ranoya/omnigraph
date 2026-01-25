@@ -517,6 +517,58 @@
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
       };
 
+      /* 
+      
+      CANVAS PAN 
+      
+      */
+
+      let paning = false;
+      let panoriginalX = 0;
+      let panoriginalY = 0;
+      let deskposoriginalX = 0;
+      let deskposoriginalY = 0;
+
+      let panstart = function (e) {
+        paning = true;
+        panoriginalX = e.clientX;
+        panoriginalY = e.clientY;
+        deskposoriginalX = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-x",
+          ),
+        );
+        deskposoriginalY = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--desk-y",
+          ),
+        );
+      };
+
+      let panend = function (e) {
+        paning = false;
+        let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
+        let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
+
+        document.documentElement.style.setProperty("--desk-x", deltaX);
+        document.documentElement.style.setProperty("--desk-y", delatY);
+      };
+
+      let panmove = function (e) {
+        if (paning) {
+          let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
+          let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
+
+          document.documentElement.style.setProperty("--desk-x", deltaX);
+          document.documentElement.style.setProperty("--desk-y", delatY);
+        }
+      };
+
+      document.getElementById("fundo").addEventListener("mousedown", panstart);
+      document.getElementById("fundo").addEventListener("mousemove", panmove);
+      document.getElementById("fundo").addEventListener("mouseup", panend);
+      document.body.addEventListener("mouseup", panend);
+
       /*
       
       WINDOW MANAGER
