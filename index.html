@@ -473,27 +473,28 @@
       };
 
       function dragstartHandler(ev) {
-        // Add the target element's id to the data transfer object
-        ev.dataTransfer.setData("text/plain", ev.target.id);
-        ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
+        if (!paning) {
+          // Add the target element's id to the data transfer object
+          ev.dataTransfer.setData("text/plain", ev.target.id);
+          ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
 
-        let gerenciatopo = document.getElementsByClassName("janela");
-        for (let i = 0; i < gerenciatopo.length; i++) {
-          gerenciatopo[i].style.zIndex = "510";
-        }
-        document.getElementById(ev.target.id).style.zIndex = "510";
+          let gerenciatopo = document.getElementsByClassName("janela");
+          for (let i = 0; i < gerenciatopo.length; i++) {
+            gerenciatopo[i].style.zIndex = "510";
+          }
+          document.getElementById(ev.target.id).style.zIndex = "510";
 
-        // console.log(ev.target.id);
-        dragstartX = ev.clientX;
-        dragstartY = ev.clientY;
-        objectX = document
-          .getElementById(ev.target.id)
-          .getBoundingClientRect().left;
-        objectY = document
-          .getElementById(ev.target.id)
-          .getBoundingClientRect().top;
-        quemsemove = ev.target.id;
-        /* console.log(
+          // console.log(ev.target.id);
+          dragstartX = ev.clientX;
+          dragstartY = ev.clientY;
+          objectX = document
+            .getElementById(ev.target.id)
+            .getBoundingClientRect().left;
+          objectY = document
+            .getElementById(ev.target.id)
+            .getBoundingClientRect().top;
+          quemsemove = ev.target.id;
+          /* console.log(
           "Origem: " +
             objectX +
             ", " +
@@ -503,26 +504,29 @@
             ", " +
             mouseY
         ); */
+        }
       }
 
       function dragoverHandler(ev) {
-        // Prevent default behavior to allow drop
-        ev.preventDefault();
-        ev.dataTransfer.dropEffect = "move";
-        const data = ev.dataTransfer.getData("text");
-        // console.log("eita: " + data);
+        if (!paning) {
+          // Prevent default behavior to allow drop
+          ev.preventDefault();
+          ev.dataTransfer.dropEffect = "move";
+          const data = ev.dataTransfer.getData("text");
+          // console.log("eita: " + data);
+        }
       }
 
       function dropHandler(ev) {
-        let quemsemove = ev.dataTransfer.getData("text");
-        // console.log(ev.screenX + " " + ev.screenY);
-        // console.log("deltaX: " + (ev.screenX - dragstartX));
-        // console.log("deltaY: " + (ev.screenY - dragstartY));
-        ev.preventDefault();
-        dragendX = ev.clientX;
-        dragendY = ev.clientY;
-
         if (!paning) {
+          let quemsemove = ev.dataTransfer.getData("text");
+          // console.log(ev.screenX + " " + ev.screenY);
+          // console.log("deltaX: " + (ev.screenX - dragstartX));
+          // console.log("deltaY: " + (ev.screenY - dragstartY));
+          ev.preventDefault();
+          dragendX = ev.clientX;
+          dragendY = ev.clientY;
+
           document.getElementById(quemsemove).style.left = `${
             dragendX - dragstartX + objectX
           }px`;
@@ -571,15 +575,7 @@
           e.clientY - 10 + "px",
         );
 
-        /*
-        if (paning) {
-          let deltaX = deskposoriginalX + (e.clientX - panoriginalX) + "px";
-          let delatY = deskposoriginalY + (e.clientY - panoriginalY) + "px";
-
-          document.documentElement.style.setProperty("--desk-x", deltaX);
-          document.documentElement.style.setProperty("--desk-y", delatY);
-        }
-        */
+        console.log(paning);
       }
 
       // Atualiza dados dos inputs
