@@ -110,6 +110,10 @@
         height: calc(100dvh - 10px) !important;
         margin: 0 !important;
         z-index: 1000 !important;
+        transform: translate(
+          calc(-1 * var(--desk-x)),
+          calc(-1 * var(--desk-y))
+        ) !important;
       }
 
       .zoomt {
@@ -570,14 +574,14 @@
         mouseY = e.clientY;
 
         if (pan) {
-          console.log(
+          /*  console.log(
             e.clientX -
               origemx +
               " , " +
               (e.clientY - origemy) +
               " / " +
               origemx,
-          );
+          ); */
 
           pDeltaX = e.clientX - origemx;
           pDeltaY = e.clientY - origemy;
