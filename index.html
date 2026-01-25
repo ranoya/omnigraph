@@ -541,7 +541,14 @@
         mouseY = e.clientY;
 
         if (pan) {
-          console.log(e.clientX - origemx + " , " + e.clientY - origemy);
+          console.log(
+            e.clientX -
+              origemx +
+              " , " +
+              (e.clientY - origemy) +
+              " / " +
+              origemx,
+          );
         }
       }
 
