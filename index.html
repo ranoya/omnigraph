@@ -539,6 +539,13 @@
         ev.preventDefault();
         // ev.dataTransfer.dropEffect = "move";
         pan = false;
+
+        pDeltaX = parseInt(
+          getComputedStyle(document.body).getPropertyValue("--desk-x"),
+        );
+        pDeltaY = parseInt(
+          getComputedStyle(document.body).getPropertyValue("--desk-y"),
+        );
       };
 
       // Attach event listeners
