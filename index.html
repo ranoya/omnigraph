@@ -415,6 +415,7 @@
       let quemsemove = "";
       let pDeltaX = 0;
       let pDeltaY = 0;
+      let controlpan = false;
 
       let sobeste = function (who) {
         let gerenciatopo = document.getElementsByClassName("janela");
@@ -503,13 +504,23 @@
         //ev.target.appendChild(document.getElementById(data));
       }
 
+      let preventpan = function () {
+        controlpan = true;
+      };
+
+      let allowpan = function () {
+        controlpan = false;
+      };
+
       let startpan = function () {
-        let ev = window.event;
-        ev.preventDefault();
-        // ev.dataTransfer.dropEffect = "move";
-        origemx = ev.clientX;
-        origemy = ev.clientY;
-        pan = true;
+        if (!controlpan) {
+          let ev = window.event;
+          ev.preventDefault();
+          // ev.dataTransfer.dropEffect = "move";
+          origemx = ev.clientX;
+          origemy = ev.clientY;
+          pan = true;
+        }
       };
 
       let stoppan = function () {
@@ -599,6 +610,8 @@
 
             nwin.setAttribute("class", "janela terminal");
             nwin.setAttribute("id", this.wframes[0].id);
+            nwin.setAttribute("onmouseover", "preventpan()");
+            nwin.setAttribute("onmouseout", "allowpan()");
             nwin.setAttribute("style", `z-index: ${this.wframes[0].z}`);
             nwin.setAttribute(
               "onclick",
@@ -620,6 +633,8 @@
             nwin = document.createElement("div");
             nwin.setAttribute("draggable", "true");
             nwin.setAttribute("class", "janela");
+            nwin.setAttribute("onmouseover", "preventpan()");
+            nwin.setAttribute("onmouseout", "allowpan()");
             nwin.setAttribute("id", this.wframes[this.ctf].id);
             nwin.setAttribute(
               "style",
