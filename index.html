@@ -426,10 +426,12 @@
 
       let pan = function () {
         console.log("pan");
+        paning = true;
       };
 
       let startpan = function () {
         console.log("panstart");
+        paning = true;
       };
 
       let stoppan = function () {
@@ -499,20 +501,24 @@
         dragendX = ev.clientX;
         dragendY = ev.clientY;
 
-        document.getElementById(quemsemove).style.left = `${
-          dragendX - dragstartX + objectX
-        }px`;
-        document.getElementById(quemsemove).style.top = `${
-          dragendY - dragstartY + objectY
-        }px`;
+        if (!paning) {
+          document.getElementById(quemsemove).style.left = `${
+            dragendX - dragstartX + objectX
+          }px`;
+          document.getElementById(quemsemove).style.top = `${
+            dragendY - dragstartY + objectY
+          }px`;
 
-        let qualjanela = windowmanager.findframe(quemsemove);
-        // console.log("quemsemove = " + quemsemove);
-        // console.log("qualjanela = " + qualjanela);
+          let qualjanela = windowmanager.findframe(quemsemove);
+          // console.log("quemsemove = " + quemsemove);
+          // console.log("qualjanela = " + qualjanela);
 
-        windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
-        windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
-        windowmanager.top(quemsemove);
+          windowmanager.wframes[qualjanela].x = dragendX - dragstartX + objectX;
+          windowmanager.wframes[qualjanela].y = dragendY - dragstartY + objectY;
+          windowmanager.top(quemsemove);
+        }
+
+        paning = false;
 
         // Get the data, which is the id of the dragged element
         // const data = ev.dataTransfer.getData("text");
