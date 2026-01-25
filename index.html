@@ -626,9 +626,9 @@
               conteudo;
           } else {
             this.wframes[this.ctf].x =
-              Math.random() * (window.innerWidth / 3) + 30;
+              Math.random() * (window.innerWidth / 3) + 30 - pDeltaX;
             this.wframes[this.ctf].y =
-              (Math.random() * window.innerHeight) / 3 + 30;
+              (Math.random() * window.innerHeight) / 3 + 30 - pDeltaY;
             this.wframes[this.ctf].w = Math.random() * 400 + 300;
             this.wframes[this.ctf].h = Math.random() * 300 + 200;
 
