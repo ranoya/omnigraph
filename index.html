@@ -340,7 +340,7 @@
   </head>
 
   <body>
-    <div id="mousetrace" onmousedown="panstart(e)"></div>
+    <div id="mousetrace" draggable="true"></div>
     <div id="sdout"></div>
     <div id="icons"></div>
     <div id="palette"></div>
@@ -503,40 +503,10 @@
         //ev.target.appendChild(document.getElementById(data));
       }
 
-      let panstart = function (e) {
-        paning = true;
-        panoriginalX = e.clientX;
-        panoriginalY = e.clientY;
-        deskposoriginalX = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-x",
-          ),
-        );
-        deskposoriginalY = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--desk-y",
-          ),
-        );
-      };
-
-      let panend = function (e) {
-        paning = false;
-        let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
-        let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
-
-        document.documentElement.style.setProperty("--desk-x", deltaX);
-        document.documentElement.style.setProperty("--desk-y", delatY);
-      };
-
       // Attach event listeners
 
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
-
-      /* document.document
-        .getElementById("mousetrace")
-        .addEventListener("mousedown", panstart); */
-      document.body.addEventListener("mouseup", panend);
 
       let mouseX = 0;
       let mouseY = 0;
