@@ -533,10 +533,16 @@
 
       function logMousePosition(e) {
         // e.screenX and e.screenY provide coordinates relative to the screen
-        mouseX = e.screenX;
-        mouseY = e.screenY;
-        document.documentElement.style.setProperty("--m-x", mouseX - 10 + "px");
-        document.documentElement.style.setProperty("--m-y", mouseY - 10 + "px");
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        document.documentElement.style.setProperty(
+          "--m-x",
+          e.clientX - 10 + "px",
+        );
+        document.documentElement.style.setProperty(
+          "--m-y",
+          e.clientY - 10 + "px",
+        );
       }
 
       // Atualiza dados dos inputs
