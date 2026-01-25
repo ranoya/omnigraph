@@ -68,6 +68,7 @@
         z-index: 2;
         top: var(--m-y);
         left: var(--m-x);
+        cursor: move;
       }
 
       #palette {
@@ -633,7 +634,7 @@
               "onclick",
               `windowmanager.top('${this.wframes[0].id}')`,
             );
-            let conteudo = `&gt; <input class="janelaterminal" type="text" id="comandos">`;
+            let conteudo = `&gt; <input autocomplete="off" class="janelaterminal" type="text" id="comandos">`;
 
             document.getElementsByTagName("body")[0].appendChild(nwin);
             document.getElementById(this.wframes[this.ctf].id).innerHTML =
