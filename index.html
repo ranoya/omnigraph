@@ -424,8 +424,8 @@
       let deskposoriginalX = 0;
       let deskposoriginalY = 0;
 
-      let pan = function () {
-        console.log("pan");
+      let pan = function (e) {
+        console.log("pan x = " + e.clientX + " y = " + e.clientY);
         paning = true;
       };
 
@@ -435,7 +435,8 @@
       };
 
       let stoppan = function () {
-        console.log("panstart");
+        console.log("panend");
+        paning = false;
       };
 
       let sobeste = function (who) {
