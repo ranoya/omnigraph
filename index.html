@@ -504,8 +504,6 @@
       }
 
       let panstart = function (e) {
-        let quemsemove = e.dataTransfer.getData("text");
-        console.log(quemsemove);
         paning = true;
         panoriginalX = e.clientX;
         panoriginalY = e.clientY;
@@ -521,11 +519,24 @@
         );
       };
 
+      let panend = function (e) {
+        paning = false;
+        let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
+        let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
+
+        document.documentElement.style.setProperty("--desk-x", deltaX);
+        document.documentElement.style.setProperty("--desk-y", delatY);
+      };
+
       // Attach event listeners
 
-      document.body.addEventListener("mousedown", panstart);
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
+
+      document.document
+        .getElementById("mousetrace")
+        .addEventListener("mousedown", panstart);
+      document.body.addEventListener("mouseup", panend);
 
       let mouseX = 0;
       let mouseY = 0;
@@ -543,6 +554,14 @@
           "--m-y",
           e.clientY - 10 + "px",
         );
+
+        if (paning) {
+          let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
+          let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
+
+          document.documentElement.style.setProperty("--desk-x", deltaX);
+          document.documentElement.style.setProperty("--desk-y", delatY);
+        }
       }
 
       // Atualiza dados dos inputs
@@ -554,28 +573,7 @@
 
       /* 
       
-      CANVAS PAN 
-      
-      */
 
-      let panend = function (e) {
-        paning = false;
-        let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
-        let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
-
-        document.documentElement.style.setProperty("--desk-x", deltaX);
-        document.documentElement.style.setProperty("--desk-y", delatY);
-      };
-
-      let panmove = function (e) {
-        if (paning) {
-          let deltaX = deskposoriginalX - (e.clientX - panoriginalX) + "px";
-          let delatY = deskposoriginalY - (e.clientY - panoriginalY) + "px";
-
-          document.documentElement.style.setProperty("--desk-x", deltaX);
-          document.documentElement.style.setProperty("--desk-y", delatY);
-        }
-      };
 
       /*
       
