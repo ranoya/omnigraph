@@ -564,8 +564,8 @@
               origemx,
           );
 
-          pDeltaX += e.clientX - origemx;
-          pDeltaY += e.clientY - origemy;
+          pDeltaX = e.clientX - origemx;
+          pDeltaY = e.clientY - origemy;
 
           let actualdeskpanx = getComputedStyle(document.body).getPropertyValue(
             "--desk-x",
