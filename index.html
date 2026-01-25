@@ -436,6 +436,7 @@
         ev.dataTransfer.setData("text/plain", ev.target.id);
         ev.dataTransfer.dropEffect = "move"; // Optional: defines the visual feedback
 
+        console.log("quem é você? " + ev.target.id);
         if (ev.target.id == "mousetrace") {
           paning = true;
         } else {
