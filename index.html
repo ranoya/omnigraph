@@ -342,10 +342,10 @@
   <body>
     <div
       id="mousetrace"
-      ondrag="pan(e)"
-      ondragend="stoppan(e)"
-      ondragstart="startpan(e)"
-      ondragleave="stoppan(e)"
+      ondrag="pan()"
+      ondragend="stoppan()"
+      ondragstart="startpan()"
+      ondragleave="stoppan()"
     ></div>
     <div id="sdout"></div>
     <div id="icons"></div>
@@ -424,15 +424,15 @@
       let deskposoriginalX = 0;
       let deskposoriginalY = 0;
 
-      let pan = function (ev) {
+      let pan = function () {
         console.log("pan");
       };
 
-      let startpan = function (ev) {
+      let startpan = function () {
         console.log("panstart");
       };
 
-      let stoppan = function (ev) {
+      let stoppan = function () {
         console.log("panstart");
       };
 
