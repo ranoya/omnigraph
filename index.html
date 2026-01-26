@@ -871,15 +871,15 @@
         console.log("ativou pelo teclado " + controlpan);
         if (!controlpan) {
           if (
-            typeof document.getElementsByTagName("terminal")[0] !=
+            typeof document.getElementsByClassName("terminal")[0] !=
               "undefined" &&
-            document.getElementsByTagName("terminal")[0] != null &&
-            document.getElementsByTagName("terminal")[0] != ""
+            document.getElementsByClassName("terminal")[0] != null &&
+            document.getElementsByClassName("terminal")[0] != ""
           ) {
-            document.getElementsByTagName("terminal")[0].style.display =
+            document.getElementsByClassName("terminal")[0].style.display =
               "block";
-            document.getElementsByTagName("janelaterminal")[0].value += e.key;
-            document.getElementsByTagName("janelaterminal")[0].focus();
+            document.getElementsByClassName("janelaterminal")[0].value += e.key;
+            document.getElementsByClassName("janelaterminal")[0].focus();
           }
         }
       };
