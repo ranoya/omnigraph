@@ -106,6 +106,26 @@
         outline: 1px solid #858585;
       }
 
+      .simpledoc {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        border: 4px double black;
+        border: 4px solid white;
+        width: 500px;
+        padding: 0;
+        box-shadow: -0.5rem 0.5rem 8px 0px #00000033;
+        margin: calc(1rem - 4px);
+        background-color: #fffef5;
+        resize: both;
+        overflow: auto;
+        overflow-y: hidden;
+        height: 400px;
+        position: fixed;
+        left: 100px;
+        top: 180px;
+        outline: 1px solid #858585;
+      }
+
       .full {
         top: 1px !important;
         left: 1px !important;
@@ -623,6 +643,76 @@
       let windowmanager = {
         ctf: 0,
         wframes: [],
+        createdoc: function (con) {
+          let nwin = "";
+          let conten = "";
+          if (typeof con != "undefined" && con != null && con != "") {
+            conten = con;
+          }
+
+          this.wframes[this.ctf] = {};
+          this.wframes[this.ctf].id = "t_" + this.ctf;
+          this.wframes[this.ctf].z = 500;
+
+          this.wframes[this.ctf].x =
+            Math.random() * (window.innerWidth / 3) + 30 - 2 * pDeltaX;
+          this.wframes[this.ctf].y =
+            (Math.random() * window.innerHeight) / 3 + 30 - 2 * pDeltaY;
+          this.wframes[this.ctf].w = Math.random() * 400 + 300;
+          this.wframes[this.ctf].h = Math.random() * 300 + 200;
+
+          nwin = document.createElement("div");
+          nwin.setAttribute("draggable", "true");
+          nwin.setAttribute("class", "janela simpledoc");
+          nwin.setAttribute("onmouseover", "preventpan()");
+          nwin.setAttribute("onmouseout", "allowpan()");
+          nwin.setAttribute("id", this.wframes[this.ctf].id);
+
+          let angulo = parseInt(Math.random() * 7) * -1 + "deg";
+          nwin.setAttribute(
+            "style",
+            `z-index: ${this.wframes[this.ctf].z}; left: ${
+              this.wframes[this.ctf].x
+            }px; top: ${this.wframes[this.ctf].y}px; width: ${
+              this.wframes[this.ctf].w
+            }px; height: ${this.wframes[this.ctf].h}px; transform: translate(var(--desk-x), var(--desk-y)) rotate(${angulo});`,
+          );
+          nwin.setAttribute(
+            "onclick",
+            `windowmanager.top('${this.wframes[this.ctf].id}')`,
+          );
+          let conteudo = `
+            
+            <!-- PRECISA VER UMA FORMA DE DAR ZOOM E FECHAR 
+
+            <div class="zoomt" onclick="windowmanager.close('${
+              this.wframes[this.ctf].id
+            }')"><div class="bola"></div></div>
+            <div class="zoomt" onclick="zoom(this)"><div class="bolaf"></div></div>
+            
+            PRECISA VER UMA FORMA DE DAR ZOOM E FECHAR -->
+            
+            `;
+
+          conteudo += `
+            </div>
+            <div id="rest_${this.ctf}" class="conteudodoc">${conten}</div>
+            
+            `;
+
+          document.getElementsByTagName("body")[0].appendChild(nwin);
+          document.getElementById(this.wframes[this.ctf].id).innerHTML =
+            conteudo;
+
+          document
+            .getElementById(this.wframes[this.ctf].id)
+            .addEventListener("dragstart", dragstartHandler);
+
+          this.top(this.wframes[this.ctf].id);
+          this.ctf++;
+
+          return "t_" + (this.ctf - 1);
+        },
         createframe: function (tit, men, con) {
           let nwin = "";
           let conten = "";
