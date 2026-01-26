@@ -869,6 +869,7 @@
 
       document.body.onfocus = function () {
         let onkeydown = (onkeyup = function (e) {
+          console.log("apertou alguma coisa");
           if (
             typeof document.getElementsByTagName("terminal")[0] !=
               "undefined" &&
