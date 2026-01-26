@@ -867,9 +867,8 @@
 
       // ativa o terminal ao teclar alguma coisa
 
-      document.body.onfocus = function () {
-        let onkeydown = (onkeyup = function (e) {
-          console.log("apertou alguma coisa");
+      let onkeydown = (onkeyup = function (e) {
+        if (pan) {
           if (
             typeof document.getElementsByTagName("terminal")[0] !=
               "undefined" &&
@@ -881,8 +880,8 @@
             document.getElementsByTagName("janelaterminal")[0].value += e.key;
             document.getElementsByTagName("janelaterminal")[0].focus();
           }
-        });
-      };
+        }
+      });
     </script>
   </body>
 </html>
