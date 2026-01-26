@@ -867,19 +867,39 @@
 
       // ativa o terminal ao teclar alguma coisa
 
-      document.body.onkeydown = onkeyup = function (e) {
+      let terminalativo = false;
+      document.body.onkeyup = function (e) {
         console.log("ativou pelo teclado " + controlpan);
-        if (!controlpan) {
+
+        if (!controlpan && !terminalativo) {
           if (
             typeof document.getElementsByClassName("terminal")[0] !=
               "undefined" &&
             document.getElementsByClassName("terminal")[0] != null &&
             document.getElementsByClassName("terminal")[0] != ""
           ) {
+            terminalativo = true;
             document.getElementsByClassName("terminal")[0].style.display =
               "block";
             document.getElementsByClassName("janelaterminal")[0].value += e.key;
             document.getElementsByClassName("janelaterminal")[0].focus();
+          }
+        }
+
+        if (!controlpan && terminalativo) {
+          if (
+            typeof document.getElementsByClassName("terminal")[0] !=
+              "undefined" &&
+            document.getElementsByClassName("terminal")[0] != null &&
+            document.getElementsByClassName("terminal")[0] != ""
+          ) {
+            if (
+              document.getElementsByClassName("janelaterminal")[0].value == ""
+            ) {
+              terminalativo = false;
+            }
+            document.getElementsByClassName("terminal")[0].style.display =
+              "none";
           }
         }
       };
