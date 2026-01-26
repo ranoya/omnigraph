@@ -256,7 +256,7 @@
         line-height: 1rem;
         border: 13px solid #db4a0d;
         width: calc(40% - 4px);
-        left: calc(30% - 13px);
+        left: calc(30% - 9px - 1rem);
         border-radius: 3px;
         padding: 1rem;
         box-shadow: 0.5rem 0.5rem 10px 0px #00000033;
@@ -264,7 +264,7 @@
         overflow-y: hidden;
         height: 2rem;
         position: fixed;
-        top: calc(25dvh - 14px);
+        top: calc(25dvh - 4rem - 14px);
         z-index: 2000 !important;
         resize: none;
         color: white;
@@ -274,6 +274,8 @@
           calc(-1 * var(--desk-x)),
           calc(-1 * var(--desk-y))
         ) !important;
+        outline: 0 !important;
+        display: none;
       }
 
       .terminal input {
@@ -316,6 +318,7 @@
         display: none;
         flex-direction: column;
         border: 13px solid #db4a0d;
+        background-color: #db4a0d;
         box-shadow: 0.5rem 0.5rem 10px 0px #00000033;
         transform: translate(
           calc(-1 * var(--desk-x)),
@@ -795,6 +798,8 @@
           .addEventListener("input", (event) => {
             if (document.getElementById("comandos").value == "") {
               document.getElementById("sdout").style.display = "none";
+              document.getElementByClassName("terminal")[0].style.display =
+                "none";
             } else {
               document.getElementById("sdout").style.display = "flex";
 
@@ -857,28 +862,26 @@
           }
 
           document.getElementById("icons").innerHTML = appsdesktop;
-
-          // document.getElementById("addons").innerHTML = customplugins;
         });
       }
-    </script>
 
-    <!--
-    <div
-      onclick="windowmanager.createframe()"
-      style="
-        cursor: pointer;
-        position: fixed;
-        z-index: 800;
-        bottom: 30px;
-        right: 40px;
-        width: 80px;
-        height: 80px;
-        background-color: #db2964;
-        color: white;
-      "
-    >
-      novo
-    </div> -->
+      // ativa o terminal ao teclar alguma coisa
+
+      document.body.onfocus = function () {
+        let onkeydown = (onkeyup = function (e) {
+          if (
+            typeof document.getElementsByTagName("terminal")[0] !=
+              "undefined" &&
+            document.getElementsByTagName("terminal")[0] != null &&
+            document.getElementsByTagName("terminal")[0] != ""
+          ) {
+            document.getElementsByTagName("terminal")[0].style.display =
+              "block";
+            document.getElementsByTagName("janelaterminal")[0].value += e.key;
+            document.getElementsByTagName("janelaterminal")[0].focus();
+          }
+        });
+      };
+    </script>
   </body>
 </html>
