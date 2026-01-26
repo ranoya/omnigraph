@@ -884,9 +884,7 @@
             document.getElementsByClassName("janelaterminal")[0].value += e.key;
             document.getElementsByClassName("janelaterminal")[0].focus();
           }
-        }
-
-        if (!controlpan && terminalativo) {
+        } else if (!controlpan && terminalativo) {
           if (
             typeof document.getElementsByClassName("terminal")[0] !=
               "undefined" &&
