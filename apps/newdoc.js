@@ -9,7 +9,7 @@ newdoc = function (u, c) {
             overflow-y: auto;
             width: calc(100%) !important;
             max-height: unset !important;
-            height: calc(100%) !important;
+            height: calc(100% - 10px) !important;
         
         }
       </style>

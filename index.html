@@ -151,6 +151,7 @@
         background-color: var(--titulo-cor-bg, #000000);
         cursor: pointer;
       }
+
       .bola {
         width: 0.3rem;
         height: 0.3rem;
@@ -172,6 +173,43 @@
 
       .zoomt:hover .bola,
       .zoomt:hover .bolaf {
+        background-color: var(--titulo-max-close, #ffb311);
+      }
+
+      .smallzoomt {
+        border: 0;
+        padding: 0;
+        margin: 0;
+        width: 1rem;
+        height: 10px;
+
+        display: block;
+        float: right;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .bolainv {
+        width: 0.3rem;
+        height: 0.3rem;
+        background-color: black;
+        border-radius: 0.5rem;
+        margin: 0.75rem;
+        margin-left: 0.2rem;
+      }
+
+      .bolafinv {
+        width: 0.5rem;
+        height: 0.25rem;
+        background-color: black;
+        border-radius: 0.5rem;
+        margin: 0.15rem;
+        margin-left: 0;
+        margin-top: 0.8rem;
+      }
+
+      .smallzoomt:hover .bolainv,
+      .snallzoomt:hover .bolaf {
         background-color: var(--titulo-max-close, #ffb311);
       }
 
@@ -701,14 +739,14 @@
           );
           let conteudo = `
             
-            <!-- PRECISA VER UMA FORMA DE DAR ZOOM E FECHAR 
 
-            <div class="zoomt" onclick="windowmanager.close('${
+
+            <div class="smallzoomt" onclick="windowmanager.close('${
               this.wframes[this.ctf].id
-            }')"><div class="bola"></div></div>
-            <div class="zoomt" onclick="zoom(this)"><div class="bolaf"></div></div>
+            }')"><div class="bolainv"></div></div>
+            <div class="smallzoomt" onclick="zoom(this)"><div class="bolafinv"></div></div>
             
-            PRECISA VER UMA FORMA DE DAR ZOOM E FECHAR -->
+
             
             `;
 
