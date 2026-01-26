@@ -7,12 +7,15 @@ ifr = function (t, u, c) {
 
             max-height: unset !important;
             overflow-y: auto;
+            height: 100% 
+
+            margin: 0 !important;
+
             width: calc(100% - 10px) !important;
             max-height: unset !important;
             height: 100%;
-            height: calc(100% - 5rem + 3px) !important;
+            height: calc(100% - 5rem + 2px) !important;;
             padding: 5px !important;
-            padding-top: 7px !important;
         
         }
       </style>
