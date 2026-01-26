@@ -15,6 +15,7 @@
 
         --menu-hover: #9f424288;
         --menu-hover: #8b878788;
+        --menu-hover: #000000;
 
         --desk-x: 0px;
         --desk-y: 0px;
@@ -244,7 +245,7 @@
       }
 
       .barramenu a:hover {
-        background-color: var(--menu-hover, #00000088);
+        /*background-color: var(--menu-hover, #00000088); */
         background-color: var(--menu-hover, #000000);
         color: white;
       }
@@ -783,6 +784,7 @@
           let quem = this.findframe(who);
           document.getElementById(who).remove();
           this.wframes.splice(quem, 1);
+          allowpan();
         },
       };
 
