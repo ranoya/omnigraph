@@ -58,7 +58,7 @@ code = function (p) {
       <pre
       class="editor codefull"
       data-name="editor_e${id}"
-      id="editor_${id}"
+      id="editor_e${id}"
       data-linguagem="html"></pre>
 
       <script>
