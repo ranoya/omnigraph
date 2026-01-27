@@ -14,12 +14,13 @@ if (
   document.head.appendChild(loader2);
 }
 
-let lingua = function (ed, qual) {
+let lingua = function (ed, qual, naming) {
   ace.edit("editor_t_" + ed).setOptions({ mode: "ace/mode/" + qual });
+  document.getElementById("t_f" + ed).innerHTML = `P${ed}: ${naming}`;
 };
 
 let code = function (p) {
-  let id = windowmanager.createframe("P1", {
+  let id = windowmanager.createframe("", {
     HTML: "HTML",
     Javascript: "Javascript",
     Typescript: "Typescript",
@@ -114,8 +115,9 @@ let code = function (p) {
   codeObserver.observe(document.getElementById(id));
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
+  document.getElementById("t_f" + nditor).innerHTML = `P${nditor}: HTML`;
   document.getElementById("m_f" + nditor).innerHTML = `
   
-    <a onclick="lingua(${nditor}, 'html');">HTML</a><a onclick="lingua(${nditor}, 'javascript');">Javascript</a><a onclick="lingua(${nditor}, 'typescript');">Typescript</a>
+    <a onclick="lingua(${nditor}, 'html', 'HTML');">HTML</a><a onclick="lingua(${nditor}, 'javascript', 'JS');">Javascript</a><a onclick="lingua(${nditor}, 'typescript', 'TS');">Typescript</a>
   `;
 };
