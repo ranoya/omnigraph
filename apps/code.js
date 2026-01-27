@@ -7,11 +7,11 @@ code = function (p) {
                          resize: none;
                          width: calc(100% - 4px);
                          height: calc(100% - 9px);
-                         border: 0;"
+                         border: 0;
                          outline: 0 !important;
                          background-color: #fffef5;
                          font-size: 14px;
-                         line-height: 20px;
+                         line-height: 20px;"
                   id="codearea_${id}"></textarea>
 
 
