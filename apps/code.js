@@ -1,8 +1,7 @@
 code = function (p) {
   let id = windowmanager.createframe("P1");
 
-  omnifilter = function (arr) {
-    let code = `
+  let code = `
     
       <style>
       
@@ -72,6 +71,5 @@ code = function (p) {
       </script>
 
     `;
-    document.getElementById("res" + id).innerHTML = code;
-  };
+  document.getElementById("res" + id).innerHTML = code;
 };
