@@ -100,8 +100,8 @@ let code = function (p) {
 
   // Create a new ResizeObserver instance
   let codeObserver = new ResizeObserver((entries) => {
-    console.log("rodou o observer..." + entries.id);
-    ace.edit("editor_" + entries.id).resize();
+    console.log("rodou o observer..." + entry.target.id);
+    ace.edit("editor_" + entry.target.id).resize();
   });
 
   codeObserver.observe(document.getElementById(id));
