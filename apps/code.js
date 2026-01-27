@@ -1,21 +1,21 @@
-code = function (p) {
-  let id = windowmanager.createframe("P1");
+if (
+  typeof carregaace == "undefined" ||
+  carregaace == null ||
+  carregaace != "" ||
+  carregaace == true
+) {
+  var carregaace = true;
+  let loader = document.createElement("script");
+  loader.src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ace.js";
+  document.head.appendChild(loader);
+  let loader2 = document.createElement("script");
+  loader2.src =
+    "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ext-language_tools.min.js";
+  document.head.appendChild(loader2);
+}
 
-  if (
-    typeof carregaace == "undefined" ||
-    carregaace == null ||
-    carregaace != "" ||
-    carregaace == true
-  ) {
-    var carregaace = true;
-    let loader = document.createElement("script");
-    loader.src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ace.js";
-    document.head.appendChild(loader);
-    let loader2 = document.createElement("script");
-    loader2.src =
-      "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ext-language_tools.min.js";
-    document.head.appendChild(loader2);
-  }
+let code = function (p) {
+  let id = windowmanager.createframe("P1");
 
   let code = `
     
@@ -70,10 +70,10 @@ code = function (p) {
     ace.edit("editor_" + id).resize();
   });
 
-  ace.edit("editor_" + id);
-  ace.edit("editor_" + id).setTheme("ace/theme/solarized_light");
-  ace.edit("editor_" + id).setKeyboardHandler("ace/keyboard/vscode");
-  ace.edit("editor_" + id).session.setMode("ace/mode/html");
+  let thisace = ace.edit("editor_" + id);
+  thisace.setTheme("ace/theme/solarized_light");
+  thisace.setKeyboardHandler("ace/keyboard/vscode");
+  thisace.session.setMode("ace/mode/html");
   let acegeneralconfig = {
     theme: "ace/theme/solarized_light",
     mode: "ace/mode/html",
@@ -92,5 +92,5 @@ code = function (p) {
     fadeFoldWidgets: true,
   };
 
-  ace.edit("editor_" + id).setOptions(acegeneralconfig);
+  thisace.setOptions(acegeneralconfig);
 };
