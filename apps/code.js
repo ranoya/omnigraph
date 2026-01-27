@@ -16,10 +16,9 @@ if (
 
 let code = function (p) {
   let id = windowmanager.createframe("P1", {
-    Tudo: "",
-    Básico: "HTML",
-    Online: "Javascript",
-    Desktop: "Typescript",
+    HTML: "HTML",
+    Javascript: "Javascript",
+    Typescript: "Typescript",
   });
 
   let code = `
