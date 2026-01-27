@@ -12,6 +12,11 @@ if (
   loader2.src =
     "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ext-language_tools.min.js";
   document.head.appendChild(loader2);
+
+  // Create a new ResizeObserver instance
+  let codeObserver = new ResizeObserver((entries) => {
+    ace.edit("editor_" + entries.id).resize();
+  });
 }
 
 let code = function (p) {
@@ -101,4 +106,6 @@ let code = function (p) {
   };
 
   thisace.setOptions(acegeneralconfig);
+
+  codeObserver.observe(document.getElementById(id));
 };
