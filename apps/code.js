@@ -80,6 +80,7 @@ let code = function (p) {
   });
   */
 
+  /*
   let thisace = ace.edit("editor_" + id);
   thisace.setTheme("ace/theme/solarized_light");
   thisace.setKeyboardHandler("ace/keyboard/vscode");
@@ -103,4 +104,5 @@ let code = function (p) {
   };
 
   thisace.setOptions(acegeneralconfig);
+  */
 };
