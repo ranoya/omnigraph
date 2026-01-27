@@ -41,7 +41,7 @@ code = function (p) {
       };
     
       let enviacomando_e${id} = function (instr) {
-        let aceed = ace.edit("editor_${id}");
+        let aceed = ace.edit("editor_e${id}");
         aceed.setKeyboardHandler("ace/keyboard/vscode");
         aceed.setOptions(instr);
       };
@@ -57,14 +57,14 @@ code = function (p) {
 
       <pre
       class="editor codefull"
-      data-name="editor_${id}}"
+      data-name="editor_e${id}"
       id="editor_${id}"
       data-linguagem="html"></pre>
 
       <script>
 
       let aceed_e${id} = ace.edit("editor_e${id}");
-      aceed_e${id}.setTheme("ace/theme/monokai");
+      aceed_e${id}.setTheme("ace/theme/solarized_light");
       aceed_e${id}.session.setMode("ace/mode/html");
       aceed_e${id}.setOptions(acegeneralconfig_e${id});
       
