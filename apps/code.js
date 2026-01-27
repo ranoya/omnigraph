@@ -15,7 +15,15 @@ if (
 }
 
 let code = function (p) {
-  let id = windowmanager.createframe("P1");
+  let id = windowmanager.createframe("P1", {
+    Tudo: "",
+    Básico: "Básico",
+    Online: "Online",
+    Desktop: "Desktop",
+    Notebook: "Literate",
+    Livecode: "Livecode",
+    CLI: "CLI",
+  });
 
   let code = `
     
@@ -66,9 +74,11 @@ let code = function (p) {
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
 
+  /*
   document.getElementById("res" + id).addEventListener("resize", function () {
     ace.edit("editor_" + id).resize();
   });
+  */
 
   let thisace = ace.edit("editor_" + id);
   thisace.setTheme("ace/theme/solarized_light");
