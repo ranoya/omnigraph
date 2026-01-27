@@ -424,12 +424,28 @@
         background-color: transparent;
         display: none;
       }
+
+      #tempdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 690;
+        width: 100%;
+        height: 100vh;
+        transform: translate(
+          calc(-1 * var(--desk-x)),
+          calc(-1 * var(--desk-y))
+        ) !important;
+        background-color: #ff000066;
+        display: none;
+      }
     </style>
 
     <script src="https://datat.vercel.app/basics.js"></script>
   </head>
 
   <body>
+    <div id="tempdrop"></div>
     <div id="overlayer"></div>
     <div id="sdout"></div>
     <div id="icons"></div>
@@ -538,6 +554,12 @@
         }
         document.getElementById(ev.target.id).style.zIndex = "510";
 
+        /* INCLUSOES NOVAS */
+
+        document.getElementById(ev.target.id).style.zIndex = 700;
+        document.getElementById("tempdrop").style.zIndex = 690;
+        document.getElementById("tempdrop").style.display = "block";
+
         // console.log(ev.target.id);
         dragstartX = ev.clientX;
         dragstartY = ev.clientY;
@@ -570,6 +592,9 @@
       }
 
       function dropHandler(ev) {
+        /* INCLUSOES NOVAS */
+        document.getElementById("tempdrop").style.display = "none";
+
         let quemsemove = ev.dataTransfer.getData("text");
         // console.log(ev.screenX + " " + ev.screenY);
         // console.log("deltaX: " + (ev.screenX - dragstartX));
@@ -651,6 +676,12 @@
 
       document.body.addEventListener("dragover", dragoverHandler);
       document.body.addEventListener("drop", dropHandler);
+
+      // INCLUSÕES NOVAS
+      document
+        .getElementById("tempdrop")
+        .addEventListener("dragover", dragoverHandler);
+      document.getElementById("tempdrop").addEventListener("drop", dropHandler);
 
       document.body.addEventListener("mousedown", startpan);
       document.body.addEventListener("mouseup", stoppan);
