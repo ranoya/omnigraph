@@ -554,6 +554,14 @@
         }
         document.getElementById(ev.target.id).style.zIndex = "510";
 
+        if (
+          typeof document.getElementById("res" + ev.target.id) != "undefined" &&
+          document.getElementById("res" + ev.target.id) != null &&
+          document.getElementById("res" + ev.target.id) != ""
+        ) {
+          document.getElementById("res" + ev.target.id).style.display = "none";
+        }
+
         /* INCLUSOES NOVAS */
 
         document.getElementById(ev.target.id).style.zIndex = 700;
@@ -625,6 +633,14 @@
         // console.log(data);
         // Append the dragged element to the drop target
         //ev.target.appendChild(document.getElementById(data));
+
+        if (
+          typeof document.getElementById("res" + ev.target.id) != "undefined" &&
+          document.getElementById("res" + ev.target.id) != null &&
+          document.getElementById("res" + ev.target.id) != ""
+        ) {
+          document.getElementById("res" + ev.target.id).style.display = "block";
+        }
       }
 
       let preventpan = function () {

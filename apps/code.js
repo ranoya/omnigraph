@@ -32,7 +32,7 @@ let code = function (p) {
 
         #editor_${id} {
             width: calc(100% - 4px);
-                         height: calc(100% - 9px);
+                         height: calc(100% - 14px);
                          border: 0;
                          outline: 0 !important;
                          background-color: #fffef5;
