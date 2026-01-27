@@ -17,12 +17,9 @@ if (
 let code = function (p) {
   let id = windowmanager.createframe("P1", {
     Tudo: "",
-    Básico: "Básico",
-    Online: "Online",
-    Desktop: "Desktop",
-    Notebook: "Literate",
-    Livecode: "Livecode",
-    CLI: "CLI",
+    Básico: "HTML",
+    Online: "Javascript",
+    Desktop: "Typescript",
   });
 
   let code = `
@@ -39,6 +36,10 @@ let code = function (p) {
                          font-size: 14px;
                          line-height: 20px;
                          margin-top: 0 !important;"
+        }
+
+        .ace_gutter-layer {
+           background-color: #fffef5;
         }
         </style>
 
@@ -70,6 +71,7 @@ let code = function (p) {
   document.getElementById("res" + id).style.height = "calc(100% - 5rem + 13px)";
   document.getElementById("res" + id).style.maxHeight =
     "calc(100% - 5rem + 13px)";
+  document.getElementById("res" + id).style.width = "calc(100% - 1rem + 0px)";
 
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
