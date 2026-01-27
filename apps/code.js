@@ -116,6 +116,6 @@ let code = function (p) {
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
   document.getElementById("m_f" + nditor).innerHTML = `
   
-    <a onclick="lingua(${nditor}, 'html');">HTML</a><a onclick="lingua(${nditor}, 'javascript');">Javascript</a><a onclick="lingua(${nditor}, 'typescript');">Javascript</a>
+    <a onclick="lingua(${nditor}, 'html');">HTML</a><a onclick="lingua(${nditor}, 'javascript');">Javascript</a><a onclick="lingua(${nditor}, 'typescript');">Typescript</a>
   `;
 };
