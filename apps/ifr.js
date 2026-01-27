@@ -27,4 +27,6 @@ ifr = function (t, u, c) {
   if (typeof c != "undefined" && c != null && c != "") {
     document.getElementById("res" + id).style.backgroundColor = c;
   }
+
+  windowmanager.top(id);
 };
