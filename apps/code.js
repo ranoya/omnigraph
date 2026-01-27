@@ -29,29 +29,12 @@ code = function (p) {
                          outline: 0 !important;
                          background-color: #fffef5;
                          font-size: 14px;
-                         line-height: 20px;"
+                         line-height: 20px;
+                         margin-top: 0 !important;"
         }
         </style>
 
-        <script>
-        let acegeneralconfig_${id} = {
-            theme: "ace/theme/solarized_light",
-            mode: "ace/mode/html",
-            enableBasicAutocompletion: true,
-            enableSnippets: true,
-            enableLiveAutocompletion: true,
-            showPrintMargin: false,
-            highlightSelectedWord: true,
-            selectionStyle: "text",
-            highlightActiveLine: false,
-            cursorStyle: "wide",
-            wrapBehavioursEnabled: true,
-            wrap: true,
-            fontSize: "14px",
-            fontFamily: "Fira Code",
-            fadeFoldWidgets: true,
-        };
-
+        <!-- 
         let enviacomando_${id} = function (instr) {
             let aceed = ace.edit("editor_${id}");
             aceed.setKeyboardHandler("ace/keyboard/vscode");
@@ -63,7 +46,7 @@ code = function (p) {
             aceed.setKeyboardHandler("ace/keyboard/vscode");
             aceed.setOptions({ mode: "ace/mode/" + qual });
         };
-        </script>
+        -->
 
         <pre
         class="editor codefull"
@@ -72,28 +55,42 @@ code = function (p) {
         data-linguagem="html"
         ></pre>
 
-        <script>
-        let aceed_${id} = ace.edit("editor_${id}");
-        aceed_${id}.setTheme("ace/theme/monokai");
-        aceed_${id}.session.setMode("ace/mode/html");
-        aceed_${id}.setOptions(acegeneralconfig_${id});
-        aceed_${id}.resize();
-
-        
-        </script>
-
-
     `;
+
   document.getElementById("res" + id).innerHTML = code;
+
   document.getElementById("res" + id).style.height = "calc(100% - 5rem + 13px)";
   document.getElementById("res" + id).style.maxHeight =
     "calc(100% - 5rem + 13px)";
 
-  document.getElementById("res" + id).style.paddingRight = "0 !important";
-  document.getElementById("res" + id).style.paddingTop = "0 !important";
-  document.getElementById("res" + id).innerHTML = code;
+  document.getElementById("res" + id).style.paddingRight = 0;
+  document.getElementById("res" + id).style.paddingTop = 0;
 
   document.getElementById("res" + id).addEventListener("resize", function () {
     ace.edit("editor_" + id).resize();
   });
+
+  ace.edit("editor_" + id);
+  ace.edit("editor_" + id).setTheme("ace/theme/solarized_light");
+  ace.edit("editor_" + id).setKeyboardHandler("ace/keyboard/vscode");
+  ace.edit("editor_" + id).session.setMode("ace/mode/html");
+  let acegeneralconfig = {
+    theme: "ace/theme/solarized_light",
+    mode: "ace/mode/html",
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: true,
+    showPrintMargin: false,
+    highlightSelectedWord: true,
+    selectionStyle: "text",
+    highlightActiveLine: false,
+    cursorStyle: "wide",
+    wrapBehavioursEnabled: true,
+    wrap: true,
+    fontSize: "14px",
+    fontFamily: "Fira Code",
+    fadeFoldWidgets: true,
+  };
+
+  ace.edit("editor_" + id).setOptions(acegeneralconfig);
 };
