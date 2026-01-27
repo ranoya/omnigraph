@@ -50,7 +50,6 @@
         );
 
         overflow: hidden;
-        transform: translate(var(--desk-x), var(--desk-y));
       }
 
       body {
@@ -438,6 +437,8 @@
     <script>
       document.documentElement.style.setProperty("--desk-x", 0);
       document.documentElement.style.setProperty("--desk-y", 0);
+      document.getElementByTagName("html")[0].style.transform =
+        "translate(var(--desk-x), var(--desk-y))";
 
       $_GET = [];
       (function () {
