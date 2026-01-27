@@ -88,7 +88,7 @@
         font-size: 1rem;
         line-height: 1.25rem;
         border: 4px double black;
-        border: 4px solid white;
+        border: 4px solid #fffef5;
         width: 500px;
         padding: 0;
         box-shadow: 1rem 1rem #00000033;
@@ -110,7 +110,7 @@
         font-size: 1rem;
         line-height: 1.25rem;
         border: 4px double black;
-        border: 4px solid white;
+        border: 4px solid #fffef5;
         width: 500px;
         padding: 0;
         box-shadow: -0.5rem 0.5rem 8px 0px #00000033;
@@ -1034,6 +1034,9 @@
             document.getElementsByClassName("terminal")[0].style.display =
               "block";
             document.getElementsByClassName("janelaterminal")[0].value = " ";
+            document
+              .getElementsByClassName("janelaterminal")[0]
+              .dispatchEvent(new Event("input", { bubbles: true }));
             document.getElementsByClassName("janelaterminal")[0].focus();
           }
         } else if (!controlpan && terminalativo) {
