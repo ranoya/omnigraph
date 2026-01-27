@@ -436,6 +436,9 @@
     <div id="icons"></div>
     <div id="palette"></div>
     <script>
+      document.documentElement.style.setProperty("--desk-x", 0);
+      document.documentElement.style.setProperty("--desk-y", 0);
+
       $_GET = [];
       (function () {
         corte = window.location.href.toString().indexOf("?");
