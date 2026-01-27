@@ -74,7 +74,7 @@ let code = function (p) {
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
 
-  document.getElementById("res" + id).addEventListener("resize", function () {
+  document.getElementById(id).addEventListener("resize", function () {
     ace.edit("editor_" + id).resize();
   });
 
