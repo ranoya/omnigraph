@@ -45,6 +45,9 @@ code = function (p) {
             fontSize: "14px",
             fontFamily: "Fira Code",
             fadeFoldWidgets: true,
+            minLines: 10, 
+            maxLines: Infinity, 
+            autoScrollEditorIntoView: true
         };
 
         let enviacomando_${id} = function (instr) {
