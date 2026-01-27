@@ -16,5 +16,6 @@ code = function (p) {
 
 
     `;
+  document.getElementById("res" + id).style.height = "calc(100% - 7rem + 13px)";
   document.getElementById("res" + id).innerHTML = code;
 };
