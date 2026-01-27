@@ -1,6 +1,22 @@
 code = function (p) {
   let id = windowmanager.createframe("P1");
 
+  if (
+    typeof carregaace == "undefined" ||
+    carregaace == null ||
+    carregaace != "" ||
+    carregaace == true
+  ) {
+    var carregaace = true;
+    let loader = document.createElement("script");
+    loader.src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ace.js";
+    document.head.appendChild(loader);
+    let loader2 = document.createElement("script");
+    loader2.src =
+      "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ext-language_tools.min.js";
+    document.head.appendChild(loader2);
+  }
+
   let code = `
     
         <style>
@@ -11,16 +27,6 @@ code = function (p) {
             height: 100%;
         }
         </style>
-
-        <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ace.js"
-        type="text/javascript"
-        ></script>
-
-        <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ext-language_tools.min.js"
-        type="text/javascript"
-        ></script>
 
         <script>
         let acegeneralconfig_${id} = {
