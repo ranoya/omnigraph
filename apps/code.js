@@ -32,7 +32,7 @@ let code = function (p) {
         @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
         #editor_${id} {
-            width: calc(100% - 4px);
+                         width: calc(100% - 0px);
                          height: calc(100% - 14px);
                          border: 0;
                          outline: 0 !important;
