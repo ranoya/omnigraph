@@ -47,7 +47,7 @@ let code = function (p) {
            background-color: #fffef5;
         }
 
-        .ace_scrollbar-v {
+        .ace_tooltip {
           display: none !important;
         }
         </style>
@@ -84,7 +84,6 @@ let code = function (p) {
 
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
-  document.getElementById("res" + id).style.overflowX = "hidden";
 
   let thisace = ace.edit("editor_" + id);
   thisace.setTheme("ace/theme/solarized_light");
