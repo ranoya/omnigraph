@@ -46,6 +46,10 @@ let code = function (p) {
         .ace_gutter-layer {
            background-color: #fffef5;
         }
+
+        .ace_scrollbar-v {
+          display: none !important;
+        }
         </style>
 
         <!-- 
