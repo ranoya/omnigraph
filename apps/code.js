@@ -39,7 +39,8 @@ let code = function (p) {
                          background-color: #fffef5;
                          font-size: 14px;
                          line-height: 20px;
-                         margin-top: 0 !important;"
+                         margin-top: 0 !important;
+                         overflow-x: hidden;"
         }
 
         .ace_gutter-layer {
@@ -79,6 +80,7 @@ let code = function (p) {
 
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
+  document.getElementById("res" + id).style.overflowX = "hidden";
 
   let thisace = ace.edit("editor_" + id);
   thisace.setTheme("ace/theme/solarized_light");
