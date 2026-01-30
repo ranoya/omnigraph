@@ -28,6 +28,13 @@ let codeout = function (p) {
     `;
 
   document.getElementById("res" + id).innerHTML = code;
+  document.getElementById("res" + id).style.height = "calc(100% - 5rem + 13px)";
+  document.getElementById("res" + id).style.maxHeight =
+    "calc(100% - 5rem + 13px)";
+  document.getElementById("res" + id).style.width = "calc(100% - 1rem + 0px)";
+
+  document.getElementById("res" + id).style.paddingRight = 0;
+  document.getElementById("res" + id).style.paddingTop = 0;
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
 
