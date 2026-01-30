@@ -5,6 +5,9 @@ if (
   carregaace == true
 ) {
   var carregaace = true;
+  var codex = [];
+  var namecodex = [];
+
   let loader = document.createElement("script");
   loader.src = "https://cdnjs.cloudflare.com/ajax/libs/ace/1.15.2/ace.js";
   document.head.appendChild(loader);
@@ -16,7 +19,6 @@ if (
 
 let lingua = function (ed, qual, naming) {
   ace.edit("editor_t_" + ed).setOptions({ mode: "ace/mode/" + qual });
-  document.getElementById("t_f" + ed).innerHTML = `P${ed}: ${naming}`;
 };
 
 let code = function (p) {
@@ -51,20 +53,6 @@ let code = function (p) {
           display: none !important;
         }
         </style>
-
-        <!-- 
-        let enviacomando_${id} = function (instr) {
-            let aceed = ace.edit("editor_${id}");
-            aceed.setKeyboardHandler("ace/keyboard/vscode");
-            aceed.setOptions(instr);
-        };
-
-        let lingua_${id} = function (qual) {
-            let aceed = ace.edit("editor_${id}");
-            aceed.setKeyboardHandler("ace/keyboard/vscode");
-            aceed.setOptions({ mode: "ace/mode/" + qual });
-        };
-        -->
 
         <pre
         class="editor codefull"
@@ -119,8 +107,18 @@ let code = function (p) {
 
   codeObserver.observe(document.getElementById(id));
 
+  thisace.getSession().on("change", function () {
+    codex[id] = thisace.getSession().getValue();
+  });
+
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
-  document.getElementById("t_f" + nditor).innerHTML = `P${nditor}: HTML`;
+
+  document
+    .getElementById("t_f" + nditor)
+    .addEventListener("input", function (e) {
+      namecodex["t_" + nditor] = document.getElementById("t_f" + nditor).value;
+    });
+
   document.getElementById("m_f" + nditor).innerHTML = `
   
     <a onclick="lingua(${nditor}, 'html', 'HTML');">HTML</a><a onclick="lingua(${nditor}, 'javascript', 'JS');">Javascript</a><a onclick="lingua(${nditor}, 'typescript', 'TS');">Typescript</a>
