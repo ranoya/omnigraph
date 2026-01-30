@@ -37,28 +37,47 @@ let codeout = function (p) {
   document.getElementById("res" + id).style.height = "calc(100% - 5rem + 13px)";
   document.getElementById("res" + id).style.maxHeight =
     "calc(100% - 5rem + 13px)";
-  document.getElementById("res" + id).style.width = "calc(100% - 1rem + 0px)";
+  document.getElementById("res" + id).style.width = "100%";
 
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
+  document.getElementById("res" + id).style.paddingleft = 0;
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
+
+  let comnomede = [];
+
+  if (typeof namecodex != "undefined" && namecodex != null && namecodex != "") {
+    for (let key in namecodex) {
+      comnomede[namecodex[key]] = key;
+    }
+  }
 
   document
     .getElementById("t_f" + nditor)
     .addEventListener("input", function (e) {
-      /*
+      let fontes = document
+        .getElementById("t_f" + nditor)
+        .value.split(",")
+        .map((item) => item.trim());
 
-        namecodex["t_" + nditor] = document.getElementById(
-          "t_f" + nditor,
-            ).value;
+      let codigofinal = "";
 
-        */
+      for (let i = 0; i < fontes.lentgh; i++) {
+        if (
+          typeof codex[comnomede[fontes[i]]] != "undefined" &&
+          codex[comnomede[fontes[i]]] != null &&
+          codex[comnomede[fontes[i]]] != ""
+        ) {
+          codigofinal += codex[comnomede[fontes[i]]];
+        }
+      }
 
       let iframe = document.getElementById("codeoutput_" + id);
 
       let iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
+      /*
       let htmlContent = `
   <!DOCTYPE html>
   <html>
@@ -78,6 +97,9 @@ let codeout = function (p) {
   </body>
   </html>
 `;
+*/
+      let htmlContent = codigofinal;
+
       iframeDoc.open();
       iframeDoc.write(htmlContent);
       iframeDoc.close();
