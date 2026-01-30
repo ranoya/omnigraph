@@ -49,6 +49,16 @@ let codeout = function (p) {
 
   if (typeof namecodex != "undefined" && namecodex != null && namecodex != "") {
     for (let key in namecodex) {
+      console.log(
+        "key: " +
+          key +
+          " namecodex[key]: " +
+          namecodex[key] +
+          " comnomede[namecodex[key]:  comnomede[" +
+          namecodex[key] +
+          "] = " +
+          key,
+      );
       comnomede[namecodex[key]] = key;
     }
   }
@@ -63,6 +73,10 @@ let codeout = function (p) {
         .getElementById("t_f" + nditor)
         .value.split(",")
         .map((item) => item.trim());
+
+      console.log("fontes");
+
+      console.table(fontes);
 
       let codigofinal = "";
 
