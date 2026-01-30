@@ -1,3 +1,9 @@
+let codemode = "html";
+
+let codeout_interpreta = function (modo) {
+  codemode = modo;
+};
+
 let codeout = function (p) {
   let id = windowmanager.createframe("", {
     HTML: "HTML",
@@ -38,8 +44,6 @@ let codeout = function (p) {
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
 
-  let codemode = "html";
-
   document
     .getElementById("t_f" + nditor)
     .addEventListener("input", function (e) {
@@ -78,4 +82,9 @@ let codeout = function (p) {
       iframeDoc.write(htmlContent);
       iframeDoc.close();
     });
+
+  document.getElementById("m_f" + nditor).innerHTML = `
+  
+    <a onclick="codeout_interpreta('html');">HTML</a><a onclick="codeout_interpreta('javascript'););">Javascript</a><a onclick="codeout_interpreta('P5');">P5</a>
+  `;
 };

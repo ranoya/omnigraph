@@ -17,7 +17,7 @@ if (
   document.head.appendChild(loader2);
 }
 
-let lingua = function (ed, qual, naming) {
+let lingua = function (ed, qual) {
   ace.edit("editor_t_" + ed).setOptions({ mode: "ace/mode/" + qual });
 };
 
@@ -121,6 +121,6 @@ let code = function (p) {
 
   document.getElementById("m_f" + nditor).innerHTML = `
   
-    <a onclick="lingua(${nditor}, 'html', 'HTML');">HTML</a><a onclick="lingua(${nditor}, 'javascript', 'JS');">Javascript</a><a onclick="lingua(${nditor}, 'typescript', 'TS');">Typescript</a>
+    <a onclick="lingua(${nditor}, 'html');">HTML</a><a onclick="lingua(${nditor}, 'javascript');">Javascript</a><a onclick="lingua(${nditor}, 'typescript');">Typescript</a>
   `;
 };
