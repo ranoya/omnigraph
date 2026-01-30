@@ -45,9 +45,6 @@ let codeout = function (p) {
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
 
-  console.log("transposição");
-  console.table("tranp_rolou?? " + comnomede);
-
   document
     .getElementById("t_f" + nditor)
     .addEventListener("input", function (e) {
