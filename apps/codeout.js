@@ -41,7 +41,7 @@ let codeout = function (p) {
 
   document.getElementById("res" + id).style.paddingRight = 0;
   document.getElementById("res" + id).style.paddingTop = 0;
-  document.getElementById("res" + id).style.paddingleft = 0;
+  document.getElementById("res" + id).style.paddingLeft = 0;
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
 
@@ -52,6 +52,9 @@ let codeout = function (p) {
       comnomede[namecodex[key]] = key;
     }
   }
+
+  console.log("transposição");
+  console.table(comnomede);
 
   document
     .getElementById("t_f" + nditor)
@@ -69,6 +72,7 @@ let codeout = function (p) {
           codex[comnomede[fontes[i]]] != null &&
           codex[comnomede[fontes[i]]] != ""
         ) {
+          console.log(i + " : " + codex[comnomede[fontes[i]]]);
           codigofinal += codex[comnomede[fontes[i]]];
         }
       }
