@@ -82,11 +82,10 @@ let codeout = function (p) {
 
       console.log(fontes.lenght);
 
-      for (let i = 0; i < fontes.lenght; i++) {
+      for (let i in fontes) {
         console.log("o que tá pegando? " + i);
 
-        /*
-          console.log(
+        console.log(
           i +
             " " +
             fontes[i] +
@@ -94,11 +93,8 @@ let codeout = function (p) {
             comnomede[fontes[i]] +
             " = " +
             codex[comnomede[fontes[i]]],
-          );
-        
-        */
+        );
 
-        /*
         if (
           typeof codex[comnomede[fontes[i]]] != "undefined" &&
           codex[comnomede[fontes[i]]] != null &&
@@ -107,8 +103,6 @@ let codeout = function (p) {
           console.log(i + " : " + codex[comnomede[fontes[i]]]);
           codigofinal += codex[comnomede[fontes[i]]];
         }
-        
-        */
       }
 
       let iframe = document.getElementById("codeoutput_" + id);
