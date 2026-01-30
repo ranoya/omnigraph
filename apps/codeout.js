@@ -47,20 +47,18 @@ let codeout = function (p) {
 
   let comnomede = [];
 
-  if (typeof namecodex != "undefined" && namecodex != null && namecodex != "") {
-    for (let key in namecodex) {
-      console.log(
-        "key: " +
-          key +
-          " namecodex[key]: " +
-          namecodex[key] +
-          " comnomede[namecodex[key]:  comnomede[" +
-          namecodex[key] +
-          "] = " +
-          key,
-      );
-      comnomede[namecodex[key]] = key;
-    }
+  for (let key in namecodex) {
+    console.log(
+      "key: " +
+        key +
+        " namecodex[key]: " +
+        namecodex[key] +
+        " comnomede[namecodex[key]:  comnomede[" +
+        namecodex[key] +
+        "] = " +
+        key,
+    );
+    comnomede[namecodex[key]] = key;
   }
 
   console.log("transposição");
