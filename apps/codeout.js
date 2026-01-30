@@ -48,6 +48,7 @@ let codeout = function (p) {
   let comnomede = [];
 
   for (let key in namecodex) {
+    comnomede[namecodex[key]] = key;
     console.log(
       "key: " +
         key +
@@ -58,11 +59,10 @@ let codeout = function (p) {
         "] = " +
         key,
     );
-    comnomede[namecodex[key]] = key;
   }
 
   console.log("transposição");
-  console.table(comnomede);
+  console.table("tranp_rolou?? " + comnomede);
 
   document
     .getElementById("t_f" + nditor)
@@ -72,27 +72,9 @@ let codeout = function (p) {
         .value.split(",")
         .map((item) => item.trim());
 
-      console.log("fontes");
-
-      console.table(fontes);
-
       let codigofinal = "";
 
-      console.log(fontes.lenght);
-
       for (let i in fontes) {
-        console.log("o que tá pegando? " + i);
-
-        console.log(
-          i +
-            " " +
-            fontes[i] +
-            " -> " +
-            comnomede[fontes[i]] +
-            " = " +
-            codex[comnomede[fontes[i]]],
-        );
-
         if (
           typeof codex[comnomede[fontes[i]]] != "undefined" &&
           codex[comnomede[fontes[i]]] != null &&
