@@ -52,7 +52,7 @@ let codeout = function (p) {
 
       for (let key in namecodex) {
         comnomede[namecodex[key]] = key;
-        console.log(
+        /* console.log(
           "key: " +
             key +
             " namecodex[key]: " +
@@ -61,7 +61,7 @@ let codeout = function (p) {
             namecodex[key] +
             "] = " +
             key,
-        );
+        ); */
       }
 
       let fontes = document
@@ -71,13 +71,37 @@ let codeout = function (p) {
 
       let codigofinal = "";
 
+      if (codemode == "html") {
+        codigofinal += `<style>body,html { margin: 0; padding: 0; }</style>`;
+      }
+
+      if (codemode == "javascript") {
+        codigofinal += `<style>body,html { margin: 0; padding: 0; }</style><script>`;
+      }
+
+      if (codemode == "P5") {
+        codigofinal += `
+            <style>body,html { margin: 0; padding: 0; }</style>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+            <script>
+              
+                `;
+      }
+
+      if (codemode == "typescript") {
+        codigofinal += `<style>body,html { margin: 0; padding: 0; }</style>
+               <script src='https://cdn.jsdelivr.net/npm/typescript@5.3.3'></script>
+               <script defer src='https://cdn.jsdelivr.net/npm/text-typescript@1.3.0'></script>
+               <script type='text/typescript'>`;
+      }
+
       for (let i in fontes) {
         if (
           typeof codex[comnomede[fontes[i]]] != "undefined" &&
           codex[comnomede[fontes[i]]] != null &&
           codex[comnomede[fontes[i]]] != ""
         ) {
-          console.log(i + " : " + codex[comnomede[fontes[i]]]);
+          // console.log(i + " : " + codex[comnomede[fontes[i]]]);
           codigofinal += codex[comnomede[fontes[i]]];
         }
       }
@@ -107,6 +131,15 @@ let codeout = function (p) {
   </html>
 `;
 */
+
+      if (
+        codemode == "javascript" ||
+        codemode == "P5" ||
+        codemode == "typescript"
+      ) {
+        codigofinal += `</script>`;
+      }
+
       let htmlContent = codigofinal;
 
       iframeDoc.open();
@@ -116,6 +149,6 @@ let codeout = function (p) {
 
   document.getElementById("m_f" + nditor).innerHTML = `
   
-    <a onclick="codeout_interpreta('html');">HTML</a><a onclick="codeout_interpreta('javascript'););">Javascript</a><a onclick="codeout_interpreta('P5');">P5</a>
+    <a onclick="codeout_interpreta('html');">HTML</a><a onclick="codeout_interpreta('javascript');">Javascript</a><a onclick="codeout_interpreta('typescript');">Typescript</a><a onclick="codeout_interpreta('P5');">P5</a>
   `;
 };
