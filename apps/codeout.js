@@ -81,6 +81,15 @@ let codeout = function (p) {
       let codigofinal = "";
 
       for (let i = 0; i < fontes.lentgh; i++) {
+        console.log(
+          i +
+            " " +
+            fontes[i] +
+            " -> " +
+            comnomede[fontes[i]] +
+            " = " +
+            codex[comnomede[fontes[i]]],
+        );
         if (
           typeof codex[comnomede[fontes[i]]] != "undefined" &&
           codex[comnomede[fontes[i]]] != null &&
