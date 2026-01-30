@@ -45,28 +45,28 @@ let codeout = function (p) {
 
   let nditor = id.match(/(t_)(\d{1,3})/)[2];
 
-  let comnomede = [];
-
-  for (let key in namecodex) {
-    comnomede[namecodex[key]] = key;
-    console.log(
-      "key: " +
-        key +
-        " namecodex[key]: " +
-        namecodex[key] +
-        " comnomede[namecodex[key]:  comnomede[" +
-        namecodex[key] +
-        "] = " +
-        key,
-    );
-  }
-
   console.log("transposição");
   console.table("tranp_rolou?? " + comnomede);
 
   document
     .getElementById("t_f" + nditor)
     .addEventListener("input", function (e) {
+      let comnomede = [];
+
+      for (let key in namecodex) {
+        comnomede[namecodex[key]] = key;
+        console.log(
+          "key: " +
+            key +
+            " namecodex[key]: " +
+            namecodex[key] +
+            " comnomede[namecodex[key]:  comnomede[" +
+            namecodex[key] +
+            "] = " +
+            key,
+        );
+      }
+
       let fontes = document
         .getElementById("t_f" + nditor)
         .value.split(",")
