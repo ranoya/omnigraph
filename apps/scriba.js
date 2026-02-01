@@ -1,3 +1,3 @@
 scriba = function (p) {
-  newdoc("https://booklines.vercel.app/docs/testeobserv.html", "#FFFFFF");
+  newdoc("https://booklines.vercel.app/scriba", "#FFFFFF");
 };
