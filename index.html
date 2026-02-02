@@ -410,10 +410,10 @@
       }
 
       .termnohover {
-        background-color: #ffffff00;
-        cursor: default;
-        border-bottom: 1px solid #ffffff00;
-        font-size: 12px;
+        background-color: #ffffff00 !important;
+        cursor: default !important;
+        border-bottom: 1px solid #ffffff00 !important;
+        font-size: 12px !important;
       }
 
       #sdout::-webkit-scrollbar {
@@ -1073,10 +1073,10 @@
                 );
 
                 if (complementos.length > 0) {
-                  recomend += `<div class="termnohover" style="cursor: default !important;"><b>Opções</b></div>`;
+                  recomend += `<div class="termnohover">OPÇÕES<br><br></div>`;
 
                   for (let c = 0; c < complementos.length; c++) {
-                    recomend += `<div onlick='inserecommand("${dados[0].instruction} ${complementos[c].completa}")'>${complementos[c].parametro}</div>`;
+                    recomend += `<div onclick='inserecommand("${dados[0].instruction} ${complementos[c].completa}")'>${complementos[c].parametro}</div>`;
                   }
                 }
               }
