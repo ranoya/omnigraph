@@ -36,6 +36,10 @@ ifr = function (t, u, menu, c) {
     document.getElementById(barramenu).style.display = "none";
     document.getElementById("res" + id).style.height =
       "calc(100% - 3rem + 8px)";
+
+    document.getElementById("res" + id).style.paddingLeft = "0 !important";
+    document.getElementById("res" + id).style.paddingRight = "0 !important";
+    document.getElementById("res" + id).style.width = "100% !important";
   }
 
   setTimeout(function () {
