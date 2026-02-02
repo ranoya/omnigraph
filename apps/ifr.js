@@ -29,9 +29,9 @@ ifr = function (t, u, c, nomenu) {
   }
 
   if (typeof nomenu != "undefined" && nomenu != null && nomenu != "") {
-    let barramenu = ifid.replace(/t\_/, "m_f");
+    let barramenu = id.replace(/t\_/, "m_f");
     document.getElementById(barramenu).style.display = "none";
-    document.getElementById("res" + ifid).style.height =
+    document.getElementById("res" + id).style.height =
       "calc(100% - 3rem + 8px) !important";
   }
 
