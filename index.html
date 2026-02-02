@@ -1066,12 +1066,6 @@
               } else if (dados.length == 1) {
                 comandounico = 1;
 
-                complementos = cfilter(
-                  cmdoptions,
-                  "instruction",
-                  dados[0].instruction,
-                );
-
                 if (complementos.length > 0) {
                   recomend += `<div class="termnohover">OPÇÕES<br><br></div>`;
 
@@ -1241,7 +1235,10 @@
           runcmd += ")";
 
           if (comandounico == 0 && cmd[1].match(/https\:\/\//)) {
-            runcmd = `ifr("${cmd[0]}", "${cmd[1]}", false);`;
+            let testa = cfilter(customcmd, "instruction", cmd[0]);
+            if (testa.length == 0) {
+              runcmd = `ifr("${cmd[0]}", "${cmd[1]}", false);`;
+            }
           }
 
           terminalativo = false;
