@@ -8,7 +8,10 @@ ifr = function (t, u, menu, c) {
             max-height: unset !important;
             overflow-y: auto;
             margin: 0 !important;
-            max-height: unset !important;        
+            max-height: unset !important; 
+            padding: 5px;
+            width: calc(100% - 10px);
+
         }
       </style>
       <iframe frameborder='0' style='width: calc(100%);height: 100%;height: calc(100% - 5px);' src='${u}'></iframe>
