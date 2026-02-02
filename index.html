@@ -409,6 +409,13 @@
         cursor: pointer;
       }
 
+      .termnohover {
+        background-color: #ffffff00;
+        cursor: default;
+        border-bottom: 1px solid #ffffff00;
+        font-size: 12px;
+      }
+
       #sdout::-webkit-scrollbar {
         background: #db4a0d;
       }
@@ -1065,10 +1072,12 @@
                   dados[0].instruction,
                 );
 
-                recomend += `<div style="cursor: default !important;"><b>Opções</b></div>`;
+                if (complementos.length > 0) {
+                  recomend += `<div class="termnohover" style="cursor: default !important;"><b>Opções</b></div>`;
 
-                for (let c = 0; c < complementos; c++) {
-                  recomend += `<div onlick='inserecommand("${dados[i].instruction} ${complementos[c].completa}")'>${complementos[c].parametro}</div>`;
+                  for (let c = 0; c < complementos.length; c++) {
+                    recomend += `<div onlick='inserecommand("${dados[i].instruction} ${complementos[c].completa}")'>${complementos[c].parametro}</div>`;
+                  }
                 }
               }
 
