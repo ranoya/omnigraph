@@ -371,6 +371,8 @@
         left: calc(20% - 13px);
         border-radius: 3px;
         padding: 1rem;
+        padding-right: 0;
+        padding-left: 0;
 
         height: 300px;
         top: calc(2rem + 25dvh);
@@ -388,6 +390,21 @@
           calc(-1 * var(--desk-x)),
           calc(-1 * var(--desk-y))
         ) !important;
+      }
+
+      #sdout div {
+        width: calc(100% - 2rem);
+        padding-right: 1rem;
+        padding-left: 1rem;
+        font-size: 16px;
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ffffff66;
+      }
+
+      #sdout div:hover {
+        background-color: #ffffff66;
       }
 
       #icons {
