@@ -501,7 +501,8 @@
       // INSERE COMMANDOS NO TERMINAL:
 
       let inserecommand = function (cmd) {
-        let inpt = (document.getElementById("comandos").value = cmd + " ");
+        let inpt = document.getElementById("comandos");
+        inpt.value = cmd + " ";
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
       };
 
