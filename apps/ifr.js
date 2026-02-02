@@ -1,4 +1,4 @@
-ifr = function (t, u, c) {
+ifr = function (t, u, c, nomenu) {
   let id = windowmanager.createframe(t);
 
   let code = `
@@ -28,5 +28,21 @@ ifr = function (t, u, c) {
     document.getElementById("res" + id).style.backgroundColor = c;
   }
 
+  if (typeof nomenu != "undefined" && nomenu != null && nomenu != "") {
+    let barramenu = ifid.replace(/t\_/, "m_f");
+    document.getElementById(barramenu).style.display = "none";
+    document.getElementById("res" + ifid).style.height =
+      "calc(100% - 3rem + 8px) !important";
+  }
+
+  document.getElementById(id).style.zIndex = 550;
+
   windowmanager.top(id);
+};
+
+let ifr_removemenu = function (ifid) {
+  let barramenu = ifid.replace(/t\_/, "m_f");
+  document.getElementById(barramenu).style.display = "none";
+  document.getElementById("res" + ifid).style.height =
+    "calc(100% - 3rem + 8px) !important";
 };
