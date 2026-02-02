@@ -1105,11 +1105,98 @@
 
       // ativa o terminal ao teclar alguma coisa
 
+      let verificaletrasvalidas = function (e) {
+        if (
+          e.key == "1" ||
+          e.key == "2" ||
+          e.key == "3" ||
+          e.key == "4" ||
+          e.key == "5" ||
+          e.key == "6" ||
+          e.key == "7" ||
+          e.key == "8" ||
+          e.key == "9" ||
+          e.key == "a" ||
+          e.key == "b" ||
+          e.key == "c" ||
+          e.key == "d" ||
+          e.key == "e" ||
+          e.key == "f" ||
+          e.key == "g" ||
+          e.key == "h" ||
+          e.key == "i" ||
+          e.key == "j" ||
+          e.key == "k" ||
+          e.key == "l" ||
+          e.key == "m" ||
+          e.key == "n" ||
+          e.key == "o" ||
+          e.key == "p" ||
+          e.key == "q" ||
+          e.key == "r" ||
+          e.key == "s" ||
+          e.key == "t" ||
+          e.key == "u" ||
+          e.key == "v" ||
+          e.key == "w" ||
+          e.key == "x" ||
+          e.key == "y" ||
+          e.key == "z" ||
+          e.key == " " ||
+          e.key == "Shift" ||
+          e.key == "Control"
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      let verificaenter = function (e) {
+        if (e.key == "Enter") {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
       let terminalativo = false;
       document.body.onkeyup = function (e) {
         // console.log("ativou pelo teclado " + controlpan);
 
-        if (!controlpan && !terminalativo) {
+        if (
+          terminalativo &&
+          verificaenter(e) &&
+          typeof document.getElementsByClassName("terminal")[0] !=
+            "undefined" &&
+          document.getElementsByClassName("terminal")[0] != null &&
+          document.getElementsByClassName("terminal")[0] != ""
+        ) {
+          // comando
+          let cmd = document
+            .getElementsByClassName("janelaterminal")[0]
+            .value.split(" ");
+          document.getElementsByClassName("janelaterminal")[0].value = "";
+          document
+            .getElementsByClassName("janelaterminal")[0]
+            .dispatchEvent(new Event("input", { bubbles: true }));
+
+          let runcmd = cmd[0] + "(";
+
+          for (let i = 1; i < cmd.length; i++) {
+            runcmd += "'" + cmd[i] + "'";
+            if (i < cmd.length - 1) {
+              runcmd += ",";
+            }
+          }
+
+          runcmd += ")";
+
+          console.log(runcmd);
+          eval(runcmed);
+        }
+
+        if (!controlpan && !terminalativo && verificaletrasvalidas(e)) {
           if (
             typeof document.getElementsByClassName("terminal")[0] !=
               "undefined" &&
