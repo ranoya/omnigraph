@@ -7,14 +7,9 @@ ifr = function (t, u, c, nomenu) {
 
             max-height: unset !important;
             overflow-y: auto;
-            height: 100% 
-
             margin: 0 !important;
-
             width: calc(100% - 10px) !important;
             max-height: unset !important;
-            height: 100%;
-            height: calc(100% - 5rem + 2px) !important;;
             padding: 5px !important;
         
         }
@@ -32,7 +27,10 @@ ifr = function (t, u, c, nomenu) {
     let barramenu = id.replace(/t\_/, "m_f");
     document.getElementById(barramenu).style.display = "none";
     document.getElementById("res" + id).style.height =
-      "calc(100% - 3rem + 8px) !important";
+      "calc(100% - 3rem + 8px)";
+  } else {
+    document.getElementById("res" + id).style.height =
+      "calc(100% - 5rem + 2px)";
   }
 
   document.getElementById(id).style.zIndex = 550;
