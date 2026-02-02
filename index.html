@@ -1066,6 +1066,12 @@
               } else if (dados.length == 1) {
                 comandounico = 1;
 
+                complementos = cfilter(
+                  cmdoptions,
+                  "instruction",
+                  dados[0].instruction,
+                );
+
                 if (complementos.length > 0) {
                   recomend += `<div class="termnohover">OPÇÕES<br><br></div>`;
 
