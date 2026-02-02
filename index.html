@@ -1175,7 +1175,8 @@
           // comando
           let cmd = document
             .getElementsByClassName("janelaterminal")[0]
-            .value.split(" ");
+            .value.trim()
+            .split(" ");
           document.getElementsByClassName("janelaterminal")[0].value = "";
           document
             .getElementsByClassName("janelaterminal")[0]
