@@ -8,10 +8,7 @@ ifr = function (t, u, menu, c) {
             max-height: unset !important;
             overflow-y: auto;
             margin: 0 !important;
-            width: calc(100% - 10px) !important;
-            max-height: unset !important;
-            padding: 5px !important;
-        
+            max-height: unset !important;        
         }
       </style>
       <iframe frameborder='0' style='width: calc(100%);height: 100%;height: calc(100% - 5px);' src='${u}'></iframe>
@@ -31,12 +28,21 @@ ifr = function (t, u, menu, c) {
   ) {
     document.getElementById("res" + id).style.height =
       "calc(100% - 5rem + 2px)";
+    document.getElementById("res" + id).style.padding = "5px !important";
+    document.getElementById("res" + id).style.width =
+      "calc(100% - 10px) !important";
   } else {
     let barramenu = id.replace(/t\_/, "m_f");
     document.getElementById(barramenu).style.display = "none";
     document.getElementById("res" + id).style.height =
       "calc(100% - 3rem + 8px)";
     document.getElementById("res" + id).classList.add("ifrnomenu");
+
+    document.getElementById("res" + id).style.paddingLeft = "0 !important";
+    document.getElementById("res" + id).style.paddingRight = "0 !important";
+    document.getElementById("res" + id).style.paddingTop = "5px !important";
+    document.getElementById("res" + id).style.paddingBottom = "5px !important";
+    document.getElementById("res" + id).style.width = "100% !important";
   }
 
   setTimeout(function () {
