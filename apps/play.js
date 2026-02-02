@@ -35,7 +35,7 @@ play = function (p) {
     for (let i = 0; i < arr.length; i++) {
       code += `<div onclick="ifr('${arr[i].Name}', '${decodeURI(
         arr[i].Link,
-      )}', '#000000', 'true');" style="width: 100%; aspect-ratio: 4/3; background-repeat: no-repeat; background-size: cover; background-position: center center; background-image: url(${
+      )}', false, '#000000');" style="width: 100%; aspect-ratio: 4/3; background-repeat: no-repeat; background-size: cover; background-position: center center; background-image: url(${
         arr[i].screenshots
       })"></div>`;
     }

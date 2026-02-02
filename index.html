@@ -1193,6 +1193,9 @@
 
           runcmd += ")";
 
+          terminalativo = false;
+          document.getElementsByClassName("terminal")[0].style.display = "none";
+
           console.log(runcmd);
           eval(runcmd);
         }

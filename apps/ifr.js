@@ -1,4 +1,4 @@
-ifr = function (t, u, c, nomenu) {
+ifr = function (t, u, menu, c) {
   let id = windowmanager.createframe(t);
 
   let code = `
@@ -23,14 +23,19 @@ ifr = function (t, u, c, nomenu) {
     document.getElementById("res" + id).style.backgroundColor = c;
   }
 
-  if (typeof nomenu != "undefined" && nomenu != null && nomenu != "") {
+  if (
+    typeof menu != "undefined" &&
+    menu != null &&
+    menu != "" &&
+    (menu == true || menu == "true")
+  ) {
+    document.getElementById("res" + id).style.height =
+      "calc(100% - 5rem + 2px)";
+  } else {
     let barramenu = id.replace(/t\_/, "m_f");
     document.getElementById(barramenu).style.display = "none";
     document.getElementById("res" + id).style.height =
       "calc(100% - 3rem + 8px)";
-  } else {
-    document.getElementById("res" + id).style.height =
-      "calc(100% - 5rem + 2px)";
   }
 
   setTimeout(function () {
