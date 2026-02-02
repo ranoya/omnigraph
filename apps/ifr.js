@@ -33,9 +33,9 @@ ifr = function (t, u, c, nomenu) {
       "calc(100% - 5rem + 2px)";
   }
 
-  document.getElementById(id).style.zIndex = 550;
-
-  windowmanager.top(id);
+  setTimeout(function () {
+    windowmanager.top(id);
+  }, 200);
 };
 
 let ifr_removemenu = function (ifid) {
