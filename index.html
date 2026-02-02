@@ -367,7 +367,7 @@
         font-size: 1rem;
         line-height: 1rem;
         border: 13px solid #db4a0d;
-        width: calc(55% - 4px);
+        width: calc(55% + 2rem - 4px);
         left: calc(20% - 13px);
         border-radius: 3px;
         padding: 1rem;
@@ -393,7 +393,7 @@
       }
 
       #sdout div {
-        width: calc(100% - 2rem);
+        width: calc(100% - 3rem);
         padding-right: 1rem;
         padding-left: 1rem;
         font-size: 16px;
@@ -401,10 +401,20 @@
         padding-top: 10px;
         padding-bottom: 10px;
         border-bottom: 1px solid #ffffff66;
+        cursor: pointer;
       }
 
       #sdout div:hover {
         background-color: #ffffff66;
+        cursor: pointer;
+      }
+
+      #sdout::-webkit-scrollbar {
+        background: #db4a0d;
+      }
+
+      #sdout::-webkit-scrollbar-thumb {
+        background: #00000022;
       }
 
       #icons {
@@ -487,6 +497,13 @@
           }
         }
       })();
+
+      // INSERE COMMANDOS NO TERMINAL:
+
+      let inserecommand = function (cmd) {
+        let inpt = (document.getElementById("comandos").value = cmd + " ");
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
 
       // REDEFININDO FUÇÕES DO DATAT PARA WINDOW MANAGER CLOSE
       const uniqueobj = function (arr, crit) {
@@ -1030,7 +1047,7 @@
 
               let recomend = "";
               for (let i = 0; i < dados.length; i++) {
-                recomend += `<div>${dados[i].instruction}</div>`;
+                recomend += `<div onclick='inserecommand("${dados[i].instruction}")'>${dados[i].instruction}</div>`;
               }
 
               document.getElementById("sdout").innerHTML = recomend;
