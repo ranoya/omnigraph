@@ -1,5 +1,5 @@
-newdoc = function (u, c) {
-  let id = windowmanager.createdoc();
+newdoc = function (u, c, p) {
+  let id = windowmanager.createdoc("", p);
 
   let code = `
       <style>
