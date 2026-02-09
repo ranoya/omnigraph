@@ -806,7 +806,7 @@
       let windowmanager = {
         ctf: 0,
         wframes: [],
-        createdoc: function (con) {
+        createdoc: function (con, pos) {
           let nwin = "";
           let conten = "";
           if (typeof con != "undefined" && con != null && con != "") {
@@ -817,12 +817,19 @@
           this.wframes[this.ctf].id = "t_" + this.ctf;
           this.wframes[this.ctf].z = 500;
 
-          this.wframes[this.ctf].x =
-            Math.random() * (window.innerWidth / 3) + 30 - 2 * pDeltaX;
-          this.wframes[this.ctf].y =
-            (Math.random() * window.innerHeight) / 3 + 30 - 2 * pDeltaY;
-          this.wframes[this.ctf].w = Math.random() * 400 + 300;
-          this.wframes[this.ctf].h = Math.random() * 300 + 200;
+          if (typeof pos != "undefined" && pos != null && pos != "") {
+            this.wframes[this.ctf].x = pos.x;
+            this.wframes[this.ctf].y = pos.y;
+            this.wframes[this.ctf].w = pos.w;
+            this.wframes[this.ctf].h = pos.h;
+          } else {
+            this.wframes[this.ctf].x =
+              Math.random() * (window.innerWidth / 3) + 30 - 2 * pDeltaX;
+            this.wframes[this.ctf].y =
+              (Math.random() * window.innerHeight) / 3 + 30 - 2 * pDeltaY;
+            this.wframes[this.ctf].w = Math.random() * 400 + 300;
+            this.wframes[this.ctf].h = Math.random() * 300 + 200;
+          }
 
           nwin = document.createElement("div");
           nwin.setAttribute("draggable", "true");
@@ -876,7 +883,7 @@
 
           return "t_" + (this.ctf - 1);
         },
-        createframe: function (tit, men, con) {
+        createframe: function (tit, men, con, pos) {
           let nwin = "";
           let conten = "";
           if (typeof con != "undefined" && con != null && con != "") {
@@ -915,12 +922,19 @@
             document.getElementById(this.wframes[this.ctf].id).innerHTML =
               conteudo;
           } else {
-            this.wframes[this.ctf].x =
-              Math.random() * (window.innerWidth / 3) + 30 - 2 * pDeltaX;
-            this.wframes[this.ctf].y =
-              (Math.random() * window.innerHeight) / 3 + 30 - 2 * pDeltaY;
-            this.wframes[this.ctf].w = Math.random() * 400 + 300;
-            this.wframes[this.ctf].h = Math.random() * 300 + 200;
+            if (typeof pos != "undefined" && pos != null && pos != "") {
+              this.wframes[this.ctf].x = pos.x;
+              this.wframes[this.ctf].y = pos.y;
+              this.wframes[this.ctf].w = pos.w;
+              this.wframes[this.ctf].h = pos.h;
+            } else {
+              this.wframes[this.ctf].x =
+                Math.random() * (window.innerWidth / 3) + 30 - 2 * pDeltaX;
+              this.wframes[this.ctf].y =
+                (Math.random() * window.innerHeight) / 3 + 30 - 2 * pDeltaY;
+              this.wframes[this.ctf].w = Math.random() * 400 + 300;
+              this.wframes[this.ctf].h = Math.random() * 300 + 200;
+            }
 
             nwin = document.createElement("div");
             nwin.setAttribute("draggable", "true");
