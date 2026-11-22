@@ -3996,7 +3996,7 @@ Incluir no início:
               }
           </style>
 
-          <div id="spm_titulograf_${spm_c}" onmouseover="spm_fechamenus()" onclick=\`spm_abreefecha(${spm_c})\`>${titulo}</div>
+          <div id="spm_titulograf_${spm_c}" onmouseover="spm_fechamenus()" onclick="spm_abreefecha(${spm_c})">${titulo}</div>
           `;
 
 
@@ -4071,7 +4071,7 @@ Incluir no início:
               if (dados[i].label == "-" || dados[i].label == "--" || dados[i].label == "---") {
                 code += `<hr></hr>`
               } else {
-                code += `<div class="item" onclick=\`smp_exec('${dados[i].run}'); spm_fechamenus();\`>${dados[i].label}</div>`;
+                code += `<div class="item" onclick="smp_exec('${dados[i].run}'); spm_fechamenus();">${dados[i].label}</div>`;
               }
 
           }
