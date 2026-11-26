@@ -361,6 +361,8 @@ window.openquery = function (elem_id, extras) {
 
       }
 
+      
+
       constroihtml += `<div class="tabelasepara separahead"></div>`;
 
       for (let i = 0; i < arr.length; i++) {
@@ -375,6 +377,8 @@ window.openquery = function (elem_id, extras) {
 
       }
 
+      outputquery.send(arr);
+    
       constroihtml += `</div>
                       <input placeholder="SQL Query" id="subqueryrunner_${elem_id}" type='text' style='outline: none; border 0; height: 40px; line-height: 25px; font-size: 16px; width: calc(100%); padding-left: 15px; padding-right: 15px; background-color: var(--grid-dot, #c7c7d1); color: var(--text,  #1c1c22); font-family: monospace; border: 0;' />
                       `;
@@ -1063,12 +1067,23 @@ window.salvarArquivo = function (id) {
 
         }
       
+
 window.listaeditores = function () {
   if (!exist("Editores de Código")) {
     newidoc("https://poepalette.vercel.app/csv?css=https://poepalette.vercel.app/dev/bigblue.css&json=https://docs.google.com/spreadsheets/d/10wpfmMWn3igQF4rJBYCo8OR90igO1tfKwcmrot0ult0/edit#gid=0&plugins=https://docs.google.com/spreadsheets/d/10wpfmMWn3igQF4rJBYCo8OR90igO1tfKwcmrot0ult0/edit#gid=162814784&css=https://poepalette.vercel.app/dev/bigblue.css", "Editores de Código", 860, 650, 450, -450);
   }
 
   center("Editores de Código");
+}
+
+window.notedb = function () {
+  newidoc(`https://omnicode.vercel.app/notebook/?temptheme=${localStorage.getItem('infcanvas:theme')}&load=https://omnicode.vercel.app/canvas/sql.html`, "Instruções");
+  centerlastframe();
+}
+
+window.notedatat = function () {
+  newidoc(`https://omnicode.vercel.app/notebook/?temptheme=${localStorage.getItem('infcanvas:theme')}&load=https://omnicode.vercel.app/canvas/sobredatat.html`, "Instruções DATAT");
+  centerlastframe();
 }
 
 
@@ -1159,14 +1174,21 @@ let getcssv = function (v) {
 
 
 
-newframe("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha de Origem");
+newframe("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha Simplificada", 399, 865, 92, 54);
+newframe("https://docs.google.com/spreadsheets/d/15lB-WclGe0WVET1yg94tZMOc5zVi6lufmv0vQZyXmYA/edit?gid=0#gid=0", "Planilha Completa", 925, 868, 537, 53);
 
-dataset("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha de Origem");
+dataset("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha Simplificada");
 
-datatgsdata("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha de Origem");
+datatgsdata("https://docs.google.com/spreadsheets/d/1FbY8hPtM8IxEJ26ybMZHpMrHdk-LEm1yuYPiFVwF94U/edit?gid=0#gid=0", "Planilha Simplificada");
+
+dataset("https://docs.google.com/spreadsheets/d/15lB-WclGe0WVET1yg94tZMOc5zVi6lufmv0vQZyXmYA/edit?gid=0#gid=0", "Planilha Completa");
+
+datatgsdata("https://docs.google.com/spreadsheets/d/15lB-WclGe0WVET1yg94tZMOc5zVi6lufmv0vQZyXmYA/edit?gid=0#gid=0", "Planilha Completa");
 
 notedb();
 
 notedatat();
 
-center("Planilha de Origem");
+setTimeout(function () {
+  setPan(0, 0);
+}, 1500);
